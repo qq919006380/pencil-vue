@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Button from './button';
 
-Vue.component('g-button',Button)
+Vue.component('wired-button',Button)
 new Vue({
     el:"#app",
     

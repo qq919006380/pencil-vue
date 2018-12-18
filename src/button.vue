@@ -1,5 +1,5 @@
 <template>
-  <div id="btn" :class="{disabled:disabled}" :role="'button'" aria-label='submit' class="host">
+  <div id="btn" class="host" :class="{disabled:disabled}" aria-label="submit">
     <slot></slot>
     <div class="overlay">
       <svg id="svg"></svg>
@@ -11,36 +11,31 @@
 import { wired } from "./wired-lib.js";
 export default {
   props: {
-    elevation: { type: Number, default: 1 },
+    elevation: { type: [Number,String], default: 1 },
     disabled: { type: Boolean, default: false }
   },
-  created() {
-    //_onDisableChange
+  mounted() {
+    this.$el.classList.add("pending");
+    this.connectedCallback();
     // this.tabIndex = this.disabled ? -1 : (this.getAttribute('tabindex') || 0);
   },
-  mounted(){
-    let _this=this
-    function connectedCallback() {
-      setTimeout(() => updated());
-    //   this.addEventListener("keydown", event => {
-    //     if (event.keyCode === 13 || event.keyCode === 32) {
-    //       event.preventDefault();
-    //       this.click();
-    //     }
-    //   });
+  methods: {
+    connectedCallback() {
+      setTimeout(() => this.updated());
+      this.$el.addEventListener("click", () => {
+        console.log(123);
+      });
 
-    //   this.setAttribute("role", "button");
-    //   this.setAttribute("aria-label", this.innerHTML);
-    }
-    connectedCallback();
+      this.$el.setAttribute("role", "button");
+      this.$el.setAttribute("aria-label", this.$slots.default[0].text);
+    },
 
     // =============================================
-    function updated() {
-    //   const svg = this.shadowRoot.getElementById("svg");
-      const svg=_this.$el.querySelector('svg')
-    //   _this._clearNode(svg);
-      const s = _this.$el.getBoundingClientRect();
-      const elev = Math.min(Math.max(1, _this.elevation), 5);
+    updated() {
+      const svg = this.$el.querySelector("#svg");
+      this._clearNode(svg);
+      const s = this.$el.getBoundingClientRect();
+      const elev = Math.min(Math.max(1, this.elevation), 5);
       const w = s.width + (elev - 1) * 2;
       const h = s.height + (elev - 1) * 2;
       svg.setAttribute("width", w);
@@ -76,16 +71,16 @@ export default {
           i * 2
         ).style.opacity = (75 - i * 10) / 100;
       }
-      _this.$el.classList.remove("pending");
-    }
+      this.$el.classList.remove("pending");
+    },
     // =============================================
-    // function _clearNode(node) {
-    //   while (node.hasChildNodes()) {
-    //     node.removeChild(node.lastChild);
-    //   }
-    // }
-
-
+    _clearNode(node) {
+      console.log(node);
+      while (node.hasChildNodes()) {
+        node.removeChild(node.lastChild);
+        console.log('node',node)
+      }
+    }
   }
 };
 </script>
@@ -140,9 +135,4 @@ path {
   fill: transparent;
   transition: transform 0.05s ease;
 }
-</style>
-    <slot></slot>
-    <div class="overlay">
-      <svg id="svg"></svg>
-    </div>
 </style>
