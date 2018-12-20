@@ -2,24 +2,26 @@
   <div>
     <input
       id="txt"
-      name="${this.name}"
-      type="${this.type}"
-      placeholder="${this.placeholder}"
-      ?disabled="${this.disabled}"
-      ?required="${this.required}"
-      autocomplete="${this.autocomplete}"
-      ?autofocus="${this.autofocus}"
-      minlength="${this.minlength}"
-      maxlength="${this.maxlength}"
-      min="${this.min}"
-      max="${this.max}"
-      step="${this.step}"
-      ?readonly="${this.readonly}"
-      size="${this.size}"
-      autocapitalize="${this.autocapitalize}"
-      autocorrect="${this.autocorrect}"
-      @change="`${(e) => this._onChange(e)}`"
+      :name="`${name}`"
+      :type="`${type}`"
+      :placeholder="`${placeholder}`"
+      :disabled="`${disabled}`"
+      :required="`${required}`"
+      :autocomplete="`${autocomplete}`"
+      :autofocus="`${autofocus}`"
+      :minlength="`${minlength}`"
+      :maxlength="`${maxlength}`"
+      :min="`${min}`"
+      :max="`${max}`"
+      :step="`${step}`"
+      :readonly="`${readonly}`"
+      :size="`${size}`"
+      :autocapitalize="`${autocapitalize}`"
+      :autocorrect="`${autocorrect}`"
     >
+    <!-- 
+    @change="`${(e) => _onChange(e)}`"
+    -->
     <div class="overlay">
       <svg id="svg"></svg>
     </div>
@@ -29,6 +31,13 @@
 <script>
 export default {
   props: {
+    name: {},
+    min: {},
+    max: {},
+    minlength: {},
+    maxlength: {},
+    size:{},
+    step: {},
     disabled: {
       type: Boolean,
       default: false
@@ -67,40 +76,47 @@ export default {
     }
   },
   mounted() {
+    console.log(1)
     this.$el.classList.add("pending");
-    this.connectedCallback();
-    // this.tabIndex = this.disabled ? -1 : (this.getAttribute('tabindex') || 0);
+    // tabIndex = disabled ? -1 : (getAttribute('tabindex') || 0);
+
   },
   methods: {
-    get input() {
-      return this.shadowRoot.getElementById("txt");
+    input() {
+      console.log(1)
+      console.log(this.$el)
+      return shadowRoot.getElementById("txt");
     },
 
     get value() {
-      const input = this.input;
+      console.log(1)
+      const input = input;
       return (input && input.value) || "";
     },
 
-    set value(v) {
-      if (this.shadowRoot) {
-        const input = this.input;
+    value(v) {
+      console.log(1)
+      if (shadowRoot) {
+        const input = input;
         if (input) {
           input.value = v;
         }
       } else {
-        this._value = v;
+        _value = v;
       }
     },
 
     _onDisableChange() {
-      if (this.disabled) {
-        this.classList.add("disabled");
+      console.log(1)
+      if (disabled) {
+        classList.add("disabled");
       } else {
-        this.classList.remove("disabled");
+        classList.remove("disabled");
       }
     },
 
     _onChange(event) {
+      console.log(1)
       event.stopPropagation();
       const newEvent = new CustomEvent(event.type, {
         bubbles: true,
@@ -108,37 +124,40 @@ export default {
         cancelable: event.cancelable,
         detail: { sourceEvent: event }
       });
-      this.dispatchEvent(newEvent);
+      dispatchEvent(newEvent);
     },
 
     _clearNode(node) {
+      console.log(1)
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
       }
     },
 
     firstUpdated() {
-      this.value = this.value || this.getAttribute("value") || "";
+      console.log(1)
+      value = value || getAttribute("value") || "";
     },
 
     updated() {
-      const svg = this.shadowRoot.getElementById("svg");
-      this._clearNode(svg);
-      const s = this.getBoundingClientRect();
+      console.log(1)
+      const svg = shadowRoot.getElementById("svg");
+      _clearNode(svg);
+      const s = getBoundingClientRect();
       svg.setAttribute("width", s.width);
       svg.setAttribute("height", s.height);
       wired.rectangle(svg, 0, 0, s.width, s.height);
-      this.classList.remove("pending");
-      if (typeof this._value !== "undefined") {
-        this.input.value = this._value;
-        delete this._value;
+      classList.remove("pending");
+      if (typeof _value !== "undefined") {
+        input.value = _value;
+        // delete _value;
       }
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 :host {
   display: inline-block;
   position: relative;
