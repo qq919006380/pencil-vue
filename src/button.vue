@@ -29,8 +29,6 @@ export default {
       this.$el.setAttribute("role", "button");
       this.$el.setAttribute("aria-label", this.$slots.default[0].text);
     },
-
-    // =============================================
     updated() {
       const svg = this.$el.querySelector("#svg");
       this._clearNode(svg);

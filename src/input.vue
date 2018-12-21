@@ -78,6 +78,7 @@ export default {
   mounted() {
     console.log(1)
     this.$el.classList.add("pending");
+    this._onDisableChange()
     // tabIndex = disabled ? -1 : (getAttribute('tabindex') || 0);
 
   },
@@ -107,11 +108,11 @@ export default {
     },
 
     _onDisableChange() {
-      console.log(1)
-      if (disabled) {
-        classList.add("disabled");
+      console.log(18)
+      if (this.disabled) {
+        this.$el.classList.add("disabled");
       } else {
-        classList.remove("disabled");
+        this.$el.classList.remove("disabled");
       }
     },
 
