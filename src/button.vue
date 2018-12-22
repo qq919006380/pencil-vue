@@ -1,5 +1,5 @@
 <template>
-  <div id="btn" class="host" :class="{disabled:disabled}" aria-label="submit">
+  <div id="btn" class="host" :class="{disabled:disabled}">
     <slot></slot>
     <div class="overlay">
       <svg id="svg"></svg>
@@ -11,7 +11,7 @@
 import { wired } from "./wired-lib.js";
 export default {
   props: {
-    elevation: { type: [Number,String], default: 1 },
+    elevation: { type: [Number, String], default: 1 },
     disabled: { type: Boolean, default: false }
   },
   mounted() {
@@ -75,14 +75,14 @@ export default {
     _clearNode(node) {
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
-        console.log('node',node)
+        console.log("node", node);
       }
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .host {
   display: inline-block;
   font-family: inherit;
@@ -100,13 +100,13 @@ export default {
   display: inline-flex;
   outline: none;
 }
-:host(.pending) {
+.host.pending {
   opacity: 0;
 }
 :host(:active) path {
   transform: scale(0.97) translate(1.5%, 1.5%);
 }
-:host(.disabled) {
+.host.disabled {
   opacity: 0.6 !important;
   background: rgba(0, 0, 0, 0.07);
   cursor: default;
@@ -126,6 +126,8 @@ export default {
 svg {
   display: block;
 }
+</style>
+<style>
 path {
   stroke: currentColor;
   stroke-width: 0.7;
@@ -133,3 +135,4 @@ path {
   transition: transform 0.05s ease;
 }
 </style>
+

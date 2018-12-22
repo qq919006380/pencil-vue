@@ -1,23 +1,24 @@
 <template>
-  <div>
+  <div class="host">
     <input
       id="txt"
-      :name="`${name}`"
-      :type="`${type}`"
-      :placeholder="`${placeholder}`"
-      :disabled="`${disabled}`"
-      :required="`${required}`"
-      :autocomplete="`${autocomplete}`"
-      :autofocus="`${autofocus}`"
-      :minlength="`${minlength}`"
-      :maxlength="`${maxlength}`"
-      :min="`${min}`"
-      :max="`${max}`"
-      :step="`${step}`"
-      :readonly="`${readonly}`"
-      :size="`${size}`"
-      :autocapitalize="`${autocapitalize}`"
-      :autocorrect="`${autocorrect}`"
+      :value="value"
+      :name="name"
+      :type="type"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :required="required"
+      :readonly="readonly"
+      :autocomplete="autocomplete"
+      :autofocus="autofocus"
+      :minlength="minlength"
+      :maxlength="maxlength"
+      :min="min"
+      :max="max"
+      :step="step"
+      :size="size"
+      :autocapitalize="autocapitalize"
+      :autocorrect="autocorrect"
     >
     <!-- 
     @change="`${(e) => _onChange(e)}`"
@@ -29,22 +30,27 @@
 </template>
 
 <script>
+import { wired } from "./wired-lib.js";
 export default {
   props: {
-    name: {},
-    min: {},
-    max: {},
-    minlength: {},
-    maxlength: {},
+    name,
+    value:{
+      type:String,
+      default:''
+    },
+    min:{},
+    max:{},
+    minlength:{},
+    maxlength:{},
     size:{},
-    step: {},
+    step:{},
+    autocomplete:{},
+    autocorrect:{},
+    autocapitalize:{},
+    placeholder:{},
     disabled: {
       type: Boolean,
       default: false
-    },
-    placeholder: {
-      type: String,
-      default: ""
     },
     type: {
       type: String,
@@ -54,10 +60,7 @@ export default {
       type: Boolean,
       default: false
     },
-    autocomplete: {
-      type: String,
-      default: ""
-    },
+    
     autofocus: {
       type: Boolean,
       default: false
@@ -66,53 +69,42 @@ export default {
       type: Boolean,
       default: false
     },
-    autocorrect: {
-      type: String,
-      default: ""
-    },
-    autocapitalize: {
-      type: String,
-      default: ""
-    }
+    
   },
   mounted() {
-    console.log(1)
+    // createRenderRoot
     this.$el.classList.add("pending");
+    
+    // render
     this._onDisableChange()
-    // tabIndex = disabled ? -1 : (getAttribute('tabindex') || 0);
 
+    // firstUpdated
+    // this.value = this.value || this.$el.getAttribute('value') || '';
+
+    // updated
+    const svg = this.$el.querySelector("#svg");
+    this._clearNode(svg);
+    const s = this.$el.getBoundingClientRect();
+    svg.setAttribute("width", s.width);
+    console.log('s.width :', s.width);
+    svg.setAttribute("height", s.height);
+    wired.rectangle(svg, 0, 0, s.width, s.height);
+    this.$el.classList.remove('pending');
+    if (typeof this._value !== 'undefined') {
+      this.input.value = this._value;
+      delete this._value;
+    }
   },
   methods: {
-    input() {
-      console.log(1)
-      console.log(this.$el)
-      return shadowRoot.getElementById("txt");
-    },
-
-    get value() {
-      console.log(1)
-      const input = input;
-      return (input && input.value) || "";
-    },
-
-    value(v) {
-      console.log(1)
-      if (shadowRoot) {
-        const input = input;
-        if (input) {
-          input.value = v;
-        }
-      } else {
-        _value = v;
-      }
-    },
+    
 
     _onDisableChange() {
-      console.log(18)
       if (this.disabled) {
         this.$el.classList.add("disabled");
+        console.log('add')
       } else {
         this.$el.classList.remove("disabled");
+        console.log('remove')
       }
     },
 
@@ -134,32 +126,12 @@ export default {
         node.removeChild(node.lastChild);
       }
     },
-
-    firstUpdated() {
-      console.log(1)
-      value = value || getAttribute("value") || "";
-    },
-
-    updated() {
-      console.log(1)
-      const svg = shadowRoot.getElementById("svg");
-      _clearNode(svg);
-      const s = getBoundingClientRect();
-      svg.setAttribute("width", s.width);
-      svg.setAttribute("height", s.height);
-      wired.rectangle(svg, 0, 0, s.width, s.height);
-      classList.remove("pending");
-      if (typeof _value !== "undefined") {
-        input.value = _value;
-        // delete _value;
-      }
-    }
   }
 };
 </script>
 
 <style scoped>
-:host {
+.host {
   display: inline-block;
   position: relative;
   padding: 5px;
@@ -168,17 +140,17 @@ export default {
   outline: none;
 }
 
-:host(.pending) {
+.host.pending {
   opacity: 0;
 }
 
-:host(.disabled) {
+.host.disabled {
   opacity: 0.6 !important;
   cursor: default;
   pointer-events: none;
 }
 
-:host(.disabled) svg {
+.host.disabled svg {
   background: rgba(0, 0, 0, 0.07);
 }
 
@@ -195,11 +167,7 @@ svg {
   display: block;
 }
 
-path {
-  stroke: currentColor;
-  stroke-width: 0.7;
-  fill: transparent;
-}
+
 
 input {
   display: block;
@@ -213,3 +181,12 @@ input {
   color: inherit;
 }
 </style>
+<style>
+path {
+  stroke: currentColor;
+  stroke-width: 0.7;
+  fill: transparent;
+}
+</style>
+
+
