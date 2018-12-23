@@ -1,7 +1,6 @@
 <template>
   <div class="host">
     <input
-      id="txt"
       :value="value"
       :name="name"
       :type="type"
@@ -20,7 +19,7 @@
       :autocapitalize="autocapitalize"
       :autocorrect="autocorrect"
     >
-    <!-- 
+    <!-- 给input添加事件
     @change="`${(e) => _onChange(e)}`"
     -->
     <div class="overlay">
@@ -93,7 +92,6 @@ export default {
     }
   },
   methods: {
-
     _onDisableChange() {
       if (this.disabled) {
         this.$el.classList.add("disabled");
@@ -103,9 +101,8 @@ export default {
         console.log('remove')
       }
     },
-
     _onChange(event) {
-      console.log(1)
+      console.log(13)
       event.stopPropagation();
       const newEvent = new CustomEvent(event.type, {
         bubbles: true,
@@ -115,13 +112,13 @@ export default {
       });
       dispatchEvent(newEvent);
     },
-
     _clearNode(node) {
       console.log(1)
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
       }
     },
+    
   }
 };
 </script>

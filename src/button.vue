@@ -103,7 +103,7 @@ export default {
 .host.pending {
   opacity: 0;
 }
-:host(:active) path {
+.host:active >>> path {
   transform: scale(0.97) translate(1.5%, 1.5%);
 }
 .host.disabled {
@@ -112,7 +112,7 @@ export default {
   cursor: default;
   pointer-events: none;
 }
-:host(:focus) path {
+.host:focus >>> path {
   stroke-width: 1.5;
 }
 .overlay {
