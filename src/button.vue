@@ -126,9 +126,7 @@ export default {
 svg {
   display: block;
 }
-</style>
-<style>
-path {
+svg >>> path {
   stroke: currentColor;
   stroke-width: 0.7;
   fill: transparent;

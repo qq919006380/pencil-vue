@@ -78,9 +78,6 @@ export default {
     // render
     this._onDisableChange()
 
-    // firstUpdated
-    // this.value = this.value || this.$el.getAttribute('value') || '';
-
     // updated
     const svg = this.$el.querySelector("#svg");
     this._clearNode(svg);
@@ -96,7 +93,6 @@ export default {
     }
   },
   methods: {
-    
 
     _onDisableChange() {
       if (this.disabled) {
@@ -166,9 +162,11 @@ export default {
 svg {
   display: block;
 }
-
-
-
+svg >>> path {
+  stroke: currentColor;
+  stroke-width: 0.7;
+  fill: transparent;
+}
 input {
   display: block;
   width: 100%;
@@ -181,12 +179,7 @@ input {
   color: inherit;
 }
 </style>
-<style>
-path {
-  stroke: currentColor;
-  stroke-width: 0.7;
-  fill: transparent;
-}
-</style>
+
+
 
 
