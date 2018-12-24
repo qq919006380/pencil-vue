@@ -59,7 +59,6 @@ export default {
       type: Boolean,
       default: false
     },
-    
     autofocus: {
       type: Boolean,
       default: false
