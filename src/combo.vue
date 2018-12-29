@@ -3,7 +3,7 @@
     <!-- <div id="container" @click="${(e) => this._onCombo(e)}"> -->
     <div id="container">
       <div id="textPanel" class="inline">
-        <span>${this.value && this.value.text}</span>
+        <span>{{this.value && this.value.text}}</span>
       </div>
       <div id="dropPanel" class="inline"></div>
       <div class="overlay">
@@ -13,7 +13,7 @@
     <wired-card id="card" role="listbox" style="display: none;">
       <!-- @item-click="${(e) => this._onItemClick(e)}" -->
       <div id="slot">
-          <slot></slot>
+        <slot></slot>
       </div>
     </wired-card>
   </div>
@@ -25,30 +25,37 @@ import { wired } from "./wired-lib.js";
 import "wired-card";
 import "wired-item";
 export default {
+  data() {
+    return {
+      value: "11asdas",
+    };
+  },
   props: {
     disabled: {
       type: Boolean,
       default: false
+    },
+    selected:{
+        type:String,
+
     },
     _cardShowing: {
       type: Boolean,
       default: false
     },
     _itemNodes: {
-    //   type: Array,
-      default: '[]'
+      //   type: Array,
+      default: "[]"
     }
   },
   mounted() {
+    console.log(this.value);
     //   firstUpdated
     this._refreshSelection();
     //   updated
     const svg = this.$el.querySelector("#svg");
     this._clearNode(svg);
-    console.log('this.$el=========================== :', this.$el);
-    const s = this.$el
-      .querySelector("#container")
-      .getBoundingClientRect();
+    const s = this.$el.querySelector("#container").getBoundingClientRect();
     svg.setAttribute("width", s.width);
     svg.setAttribute("height", s.height);
     const textBounds = this.$el
@@ -71,6 +78,7 @@ export default {
     this.$el.classList.remove("pending");
     this._setAria();
     this._attachEvents();
+    console.log(this.value);
   },
   methods: {
     _onDisableChange() {
@@ -95,7 +103,7 @@ export default {
         const nodes = this.$el.getElementById("slot").assignedNodes();
         if (nodes && nodes.length) {
           for (let i = 0; i < nodes.length; i++) {
-            if (nodes[i].tagName === "WIRED-ITEM") {
+            if (nodes[i].tagName === "DIV") {
               nodes[i].setAttribute("role", "option");
               this._itemNodes.push(nodes[i]);
             }
@@ -114,17 +122,19 @@ export default {
         this.lastSelectedItem.classList.remove("selected-item");
         this.lastSelectedItem.removeAttribute("aria-selected");
       }
-      console.log('ttt', this.$el.querySelector("#slot"));
       const slot = this.$el.querySelector("#slot");
-    //   const nodes = slot.assignedNodes();
+      //   const nodes = slot.assignedNodes();
       const nodes = slot.children;
+      console.log(slot.children);
       if (nodes) {
         let selectedItem = null;
         for (let i = 0; i < nodes.length; i++) {
-          if (nodes[i].tagName === "WIRED-ITEM") {
-            const value = nodes[i].value || "";
-            if (this.selected && value === this.selected) {
+          if (nodes[i].tagName === "DIV") {
+            const value = nodes[i].getAttribute("value") || "";
+            console.log(nodes[i])
+            if (this.selected && (value === this.selected)) {
               selectedItem = nodes[i];
+              console.log(selectedItem)
               break;
             }
           }
@@ -134,15 +144,17 @@ export default {
           this.lastSelectedItem.classList.add("selected-item");
           this.lastSelectedItem.setAttribute("aria-selected", "true");
         }
+        console.log(selectedItem)
         if (selectedItem) {
           this.value = {
-            value: selectedItem.value,
-            text: selectedItem.text
+            value: selectedItem.getAttribute('value') ,
+            text: selectedItem.getAttribute('text')
           };
         } else {
           this.value = null;
         }
       }
+      console.log(this.value);
     },
 
     _onCombo(event) {

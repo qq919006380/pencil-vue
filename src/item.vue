@@ -1,5 +1,5 @@
 <template>
-  <div class="host">
+  <div class="host" :value="value" :text="text">
     <span>{{text}}</span>
   </div>
 </template>
