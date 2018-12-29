@@ -6,7 +6,9 @@
   "dependencies": {
     "test": "^0.6.0",
     "vue": "^2.5.21",
-    "vue-hot-reload-api": "^2.3.1"
+    "vue-hot-reload-api": "^2.3.1",
+    "wired-card": "^0.8.1",
+    "wired-item": "^0.8.1"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.3.1",

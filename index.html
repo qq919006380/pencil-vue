@@ -1,51 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
+
 <body>
-    <div id="app">
-        <wired-button>button</wired-button>
-        <wired-button elevation='5'>button</wired-button>
-        <wired-button elevation=5>button</wired-button>
-        <wired-button disabled>button</wired-button>
-        <hr>
-        <wired-Input name='asd'></wired-Input>
-        <wired-input value='value'></wired-input>
-        <wired-input type='password'></wired-input>
-        <wired-input placeholder="Enter name"></wired-input>
-        <wired-input placeholder="Disabled" disabled></wired-input>
-        <hr>
-        <wired-card>
-            <h4>Card 1</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </wired-card>
-          <wired-card>
-            <h4>Card 2</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </wired-card>
-          <wired-card>
-            <h4>Card 3</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </wired-card> 
-          <hr>
-          <wired-checkbox id="cbox" text="Checkbox label"></wired-checkbox>
-    </div>
-    <script src="./src/app.js"></script>
+  <div id="app">
+    <wired-button>button</wired-button>
+    <wired-button elevation='5'>button</wired-button>
+    <wired-button elevation=5>button</wired-button>
+    <wired-button disabled>button</wired-button>
+    <hr>
+    <wired-Input name='asd'></wired-Input>
+    <wired-input value='value'></wired-input>
+    <wired-input type='password'></wired-input>
+    <wired-input placeholder="Enter name"></wired-input>
+    <wired-input placeholder="Disabled" disabled></wired-input>
+    <hr>
+    <wired-card>
+      <h4>Card 1</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </wired-card>
+    <wired-card>
+      <h4>Card 2</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </wired-card>
+    <wired-card>
+      <h4>Card 3</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </wired-card>
+    <hr>
+    <wired-checkbox id="cbox" text="Checkbox label"></wired-checkbox>
+    <hr>
+    <wired-combo id="combo" selected="two">
+      <wired-item value="one" text="Number one"></wired-item>
+      <wired-item value="two" text="Number two"></wired-item>
+      <wired-item value="three" text="Number three"></wired-item>
+    </wired-combo>
+  </div>
+  <script src="./src/app.js"></script>
 </body>
+
 </html>
