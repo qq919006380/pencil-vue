@@ -8,10 +8,10 @@
       :disabled="disabled"
       :required="required"
       :readonly="readonly"
-      @change="$emit('change',$event.target)"
-      @input="$emit('input',$event.target)"
-      @focus="$emit('focus',$event.target)"
-      @blur="$emit('blur',$event.target)"
+      @change="$emit('change',$event.target.value)"
+      @input="$emit('input',$event.target.value)"
+      @focus="$emit('focus',$event.target.value)"
+      @blur="$emit('blur',$event.target.value)"
     >
     <div class="overlay">
       <svg id="svg"></svg>
@@ -27,7 +27,6 @@ export default {
     name: {},
     value: {
       type: String,
-      default: ""
     },
     placeholder: {
       type: String,

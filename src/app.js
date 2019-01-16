@@ -18,6 +18,11 @@ Vue.component("wired-popover", Popover);
 
 new Vue({
   el: "#app",
+  data(){
+    return{
+      data:"1"
+    }
+  },
   methods: {
     on(e) {
       console.log(e);

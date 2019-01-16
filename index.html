@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <style>
+      .card {
+        background: pink;
+      }
+    </style>
   </head>
 
   <body>
     <div id="app">
-      <wired-button>button</wired-button>
+      <wired-button class="a">button</wired-button>
       <wired-button elevation="5">button</wired-button>
       <wired-button elevation="5">button</wired-button>
       <wired-button disabled>button</wired-button>
@@ -23,9 +28,11 @@
         <wired-input value="value" readonly></wired-input>
         <wired-button @click="on">提交</wired-button>
         <wired-input value="value" error="请输入正确密码"></wired-input>
-      </form>      
+        <wired-input v-model="data"></wired-input>
+        <div>{{data}}</div>
+      </form>
       <hr />
-      <wired-card>
+      <wired-card class="card">
         <h4>Card 1</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

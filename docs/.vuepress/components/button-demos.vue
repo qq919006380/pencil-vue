@@ -1,32 +1,43 @@
 <template>
   <div>
+    <hr>
+    <h3>使用方法</h3>
+    <h4>预览</h4>
     <wired-button>默认按钮</wired-button>
-    <wired-button elevation="5">elevation</wired-button>
+    <wired-button elevation="3">elevation</wired-button>
     <wired-button disabled>disabled</wired-button>
-      <pre><code>{{content}}</code></pre>
+    <h4>代码</h4>
+    <pre><code>{{content}}</code></pre>
   </div>
 </template>
 
 <script>
 import Button from "../../../src/button";
+import Card from "../../../src/card";
 export default {
+  components: {
+    "wired-button": Button,
+    "wired-card": Card
+  },
   data() {
     return {
       content: `
     <wired-button>默认按钮</wired-button>
-    <wired-button elevation='5'>elevation</wired-button>
+    <wired-button elevation='3'>elevation</wired-button>
     <wired-button disabled>disabled</wired-button>
-    ` .replace(/\t+| +/g, "").trim()
+    `
+        .replace(/\t+| +/g, "")
+        .trim()
     };
-  },
-  components: {
-    "wired-button": Button
   }
 };
 </script>
 
 <style>
-wired-button{
-    color: pink
+.Preview {
+  padding: 20px;
+}
+.code {
+  font-weight: bold;
 }
 </style>

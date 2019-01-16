@@ -1,11 +1,11 @@
 module.exports = {
     base: '/wired-vue/', 
-    title: 'vue组件',
+    title: 'wired-vue',
     description: '一个简单的UI框架',
     themeConfig: {
+      repo: 'qq919006380/notes', // 添加 github 链接
       nav: [
         {text: '主页', link: '/'},
-        {text: '文档', link: '/guide/'},
       ],
       sidebar: [
         {
