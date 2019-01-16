@@ -34,7 +34,7 @@ export default {
       window.removeEventListener("resize", this.resizeHandler);
       delete this.resizeHandler;
     }
-
+    this.$el.classList.remove('pending');
     this.updated()
   },
   methods: {

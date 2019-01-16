@@ -1,5 +1,5 @@
 <template>
-  <div id="btn" class="host" :class="{disabled:disabled}">
+  <div id="btn" class="host" :class="{disabled:disabled}" @click='$emit("click",$event.target)'>
     <slot></slot>
     <div class="overlay">
       <svg id="svg"></svg>
@@ -15,11 +15,19 @@ export default {
     disabled: { type: Boolean, default: false }
   },
   mounted() {
-    this.updated()
+    this.$el.classList.remove('pending');
+    this.updated();
   },
   methods: {
+    _clearNode(node) {
+      while (node.hasChildNodes()) {
+        node.removeChild(node.lastChild);
+        console.log("node", node);
+      }
+    },
     updated() {
       const svg = this.$el.querySelector("#svg");
+      this._clearNode(svg);
       const s = this.$el.getBoundingClientRect();
       const elev = Math.min(Math.max(1, this.elevation), 5);
       const w = s.width + (elev - 1) * 2;
@@ -57,7 +65,7 @@ export default {
           i * 2
         ).style.opacity = (75 - i * 10) / 100;
       }
-    },
+    }
   }
 };
 </script>

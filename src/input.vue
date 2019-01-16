@@ -1,5 +1,5 @@
 <template>
-  <div class="host">
+  <div class="host" :class="disabled?'disabled':''">
     <input
       :value="value"
       :name="name"
@@ -8,20 +8,11 @@
       :disabled="disabled"
       :required="required"
       :readonly="readonly"
-      :autocomplete="autocomplete"
-      :autofocus="autofocus"
-      :minlength="minlength"
-      :maxlength="maxlength"
-      :min="min"
-      :max="max"
-      :step="step"
-      :size="size"
-      :autocapitalize="autocapitalize"
-      :autocorrect="autocorrect"
+      @change="$emit('change',$event.target)"
+      @input="$emit('input',$event.target)"
+      @focus="$emit('focus',$event.target)"
+      @blur="$emit('blur',$event.target)"
     >
-    <!-- 给input添加事件
-    @change="`${(e) => _onChange(e)}`"
-    -->
     <div class="overlay">
       <svg id="svg"></svg>
     </div>
@@ -32,92 +23,57 @@
 import { wired } from "./wired-lib.js";
 export default {
   props: {
-    name,
-    value:{
-      type:String,
-      default:''
+    name:{},
+    value: {
+      type: String,
+      default: ""
     },
-    min:{},
-    max:{},
-    minlength:{},
-    maxlength:{},
-    size:{},
-    step:{},
-    autocomplete:{},
-    autocorrect:{},
-    autocapitalize:{},
-    placeholder:{},
-    disabled: {
-      type: Boolean,
-      default: false
+    placeholder: {
+      type:String,
+      default:""
     },
     type: {
       type: String,
       default: "text"
     },
-    required: {
+    disabled: {
       type: Boolean,
       default: false
     },
-    autofocus: {
+    required: {
       type: Boolean,
       default: false
     },
     readonly: {
       type: Boolean,
       default: false
-    },
-    
-  },
-  mounted() {
-    // createRenderRoot
-    this.$el.classList.add("pending");
-    
-    // render
-    this._onDisableChange()
-
-    // updated
-    const svg = this.$el.querySelector("#svg");
-    this._clearNode(svg);
-    const s = this.$el.getBoundingClientRect();
-    svg.setAttribute("width", s.width);
-    console.log('s.width :', s.width);
-    svg.setAttribute("height", s.height);
-    wired.rectangle(svg, 0, 0, s.width, s.height);
-    this.$el.classList.remove('pending');
-    if (typeof this._value !== 'undefined') {
-      this.input.value = this._value;
-      delete this._value;
     }
   },
+  mounted() {
+    this.$el.classList.add("pending");
+    this.updated();
+  },
   methods: {
-    _onDisableChange() {
-      if (this.disabled) {
-        this.$el.classList.add("disabled");
-        console.log('add')
-      } else {
-        this.$el.classList.remove("disabled");
-        console.log('remove')
+    updated() {
+      const svg = this.$el.querySelector("#svg");
+      this._clearNode(svg);
+      const s = this.$el.getBoundingClientRect();
+      svg.setAttribute("width", s.width);
+      console.log("s.width :", s.width);
+      svg.setAttribute("height", s.height);
+      wired.rectangle(svg, 0, 0, s.width, s.height);
+      this.$el.classList.remove("pending");
+      if (typeof this._value !== "undefined") {
+        this.input.value = this._value;
+        delete this._value;
       }
     },
-    _onChange(event) {
-      console.log(13)
-      event.stopPropagation();
-      const newEvent = new CustomEvent(event.type, {
-        bubbles: true,
-        composed: true,
-        cancelable: event.cancelable,
-        detail: { sourceEvent: event }
-      });
-      dispatchEvent(newEvent);
-    },
     _clearNode(node) {
-      console.log(1)
+      console.log(1);
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
       }
-    },
-    
+    }
   }
 };
 </script>
