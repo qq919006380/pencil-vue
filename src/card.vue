@@ -2,7 +2,6 @@
   <div class="host">
     <div>
       <slot></slot>
-      <!-- <slot @slotchange="${() => this.requestUpdate()}"></slot> -->
     </div>
     <div class="overlay">
       <svg id="svg"></svg>
@@ -20,11 +19,6 @@ export default {
     }
   },
   mounted() {
-    // createRenderRoot
-    this.$el.classList.add("pending");
-
-    // connectedCallback
-    console.log(this.$el.resizeHandler);
     if (!this.$el.resizeHandler) {
       this.$el.resizeHandler = this._debounce(
         this.updated.bind(this.$el),
@@ -34,14 +28,14 @@ export default {
       );
       window.addEventListener("resize", this.$el.resizeHandler);
     }
-    setTimeout(() => this.updated());
 
-    // disconnectedCallback
     if (this.resizeHandler) {
         console.log('removeEventListener')
       window.removeEventListener("resize", this.resizeHandler);
       delete this.resizeHandler;
     }
+
+    this.updated()
   },
   methods: {
     _clearNode(node) {

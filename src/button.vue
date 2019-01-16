@@ -15,23 +15,11 @@ export default {
     disabled: { type: Boolean, default: false }
   },
   mounted() {
-    this.$el.classList.add("pending");
-    this.connectedCallback();
-    // this.tabIndex = this.disabled ? -1 : (this.getAttribute('tabindex') || 0);
+    this.updated()
   },
   methods: {
-    connectedCallback() {
-      setTimeout(() => this.updated());
-      this.$el.addEventListener("click", () => {
-        console.log(123);
-      });
-
-      this.$el.setAttribute("role", "button");
-      this.$el.setAttribute("aria-label", this.$slots.default[0].text);
-    },
     updated() {
       const svg = this.$el.querySelector("#svg");
-      this._clearNode(svg);
       const s = this.$el.getBoundingClientRect();
       const elev = Math.min(Math.max(1, this.elevation), 5);
       const w = s.width + (elev - 1) * 2;
@@ -69,15 +57,7 @@ export default {
           i * 2
         ).style.opacity = (75 - i * 10) / 100;
       }
-      this.$el.classList.remove("pending");
     },
-    // =============================================
-    _clearNode(node) {
-      while (node.hasChildNodes()) {
-        node.removeChild(node.lastChild);
-        console.log("node", node);
-      }
-    }
   }
 };
 </script>
@@ -99,9 +79,6 @@ export default {
   text-align: center;
   display: inline-flex;
   outline: none;
-}
-.host.pending {
-  opacity: 0;
 }
 .host:active >>> path {
   transform: scale(0.97) translate(1.5%, 1.5%);
