@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <div id="container">
-      <!-- <div id="container" @click="${() => this._toggleCheck()}"> -->
+  <div id="container" class="host" :class="disabled?'disabled':''">
+    <div id="container" @click="_toggleCheck">
       <div id="checkPanel" class="inline">
         <svg id="svg" width="0" height="0"></svg>
       </div>
@@ -13,110 +12,76 @@
 <script>
 import { wired } from "./wired-lib.js";
 export default {
-    props:{
-        text:{
-            type:String
-        },
-        disabled:{
-            type:Boolean,
-            default:false
-        },
-        checked:{
-            type:Boolean,
-            default:false
-        }
+  props: {
+    text: {
+      type: String
     },
-  mounted() {
-      this.$el.classList.add('pending');
-    // updated
-    const svg = this.$el.querySelector("#svg");
-    this._clearNode(svg);
-    const s = { width: 24, height: 24 };
-    svg.setAttribute("width", s.width);
-    svg.setAttribute("height", s.height);
-    wired.rectangle(svg, 0, 0, s.width, s.height);
-    const checkpaths = [];
-    checkpaths.push(
-      wired.line(
-        svg,
-        s.width * 0.3,
-        s.height * 0.4,
-        s.width * 0.5,
-        s.height * 0.7
-      )
-    );
-    checkpaths.push(
-      wired.line(svg, s.width * 0.5, s.height * 0.7, s.width + 5, -5)
-    );
-    checkpaths.forEach(d => {
-      d.style.strokeWidth = 2.5;
-    });
-    if (this.checked) {
-      checkpaths.forEach(d => {
-        d.style.display = "";
-      });
-    } else {
-      checkpaths.forEach(d => {
-        d.style.display = "none";
-      });
+    disabled: {
+      type: Boolean,
+      default: false
     }
-    this.$el.classList.remove("pending");
-
-    this._setAria();
-    this._attachEvents();
+  },
+  data() {
+    return {
+      checked: false
+    };
+  },
+  mounted() {
+    this.$el.classList.add("pending");
+    this.updated();
   },
   methods: {
-    _onDisableChange() {
-      if (this.disabled) {
-        this.$el.classList.add("disabled");
+    updated() {
+      const svg = this.$el.querySelector("#svg");
+      this._clearNode(svg);
+      const s = { width: 24, height: 24 };
+      svg.setAttribute("width", s.width);
+      svg.setAttribute("height", s.height);
+      wired.rectangle(svg, 0, 0, s.width, s.height);
+      const checkpaths = [];
+      checkpaths.push(
+        wired.line(
+          svg,
+          s.width * 0.3,
+          s.height * 0.4,
+          s.width * 0.5,
+          s.height * 0.7
+        )
+      );
+      checkpaths.push(
+        wired.line(svg, s.width * 0.5, s.height * 0.7, s.width + 5, -5)
+      );
+      checkpaths.forEach(d => {
+        d.style.strokeWidth = 2.5;
+      });
+      if (this.checked) {
+        checkpaths.forEach(d => {
+          d.style.display = "";
+        });
       } else {
-        this.$el.classList.remove("disabled");
+        checkpaths.forEach(d => {
+          d.style.display = "none";
+        });
       }
-      this._refreshTabIndex();
+      this.$el.classList.remove("pending");
     },
+    
 
-    _refreshTabIndex() {
-      this.tabIndex = this.disabled ? -1 : this.getAttribute("tabindex") || 0;
-    },
-
-    _setAria() {
-      this.$el.setAttribute("role", "checkbox");
-      this.$el.setAttribute("aria-checked", this.checked);
-      this.$el.setAttribute("aria-label", this.text);
-    },
-
+    
     _toggleCheck() {
       this.checked = !(this.checked || false);
-      const event = new CustomEvent("change", {
-        bubbles: true,
-        composed: true,
-        checked: this.checked,
-        detail: { checked: this.checked }
-      });
-      this.dispatchEvent(event);
+      this.updated();
     },
-
     _clearNode(node) {
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
       }
     },
-    _attachEvents() {
-      if (!this._keyboardAttached) {
-        this.$el.addEventListener("keydown", event => {
-          if (event.keyCode === 13 || event.keyCode === 32) {
-            event.preventDefault();
-            this._toggleCheck();
-          }
-        });
-        this._keyboardAttached = true;
-      }
-    }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .host {
   display: block;
   font-family: inherit;

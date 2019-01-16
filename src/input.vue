@@ -17,20 +17,21 @@
       <svg id="svg"></svg>
     </div>
   </div>
+  
 </template>
 
 <script>
 import { wired } from "./wired-lib.js";
 export default {
   props: {
-    name:{},
+    name: {},
     value: {
       type: String,
       default: ""
     },
     placeholder: {
-      type:String,
-      default:""
+      type: String,
+      default: ""
     },
     type: {
       type: String,

@@ -15,16 +15,15 @@
       <wired-button disabled>button</wired-button>
       <hr />
       <form action="ss">
-        <wired-Input name="用户名" @input='on'></wired-Input>
-        <wired-input value="value"></wired-input>
+        <wired-Input name="用户名" @input="on"></wired-Input>
         <wired-input type="password"></wired-input>
         <wired-input placeholder="Enter name"></wired-input>
         <wired-input placeholder="Disabled" disabled></wired-input>
         <wired-input value="" required></wired-input>
         <wired-input value="value" readonly></wired-input>
-        <wired-button @click='on'>提交</wired-button>
-      </form>
-
+        <wired-button @click="on">提交</wired-button>
+        <wired-input value="value" error="请输入正确密码"></wired-input>
+      </form>      
       <hr />
       <wired-card>
         <h4>Card 1</h4>
@@ -55,6 +54,7 @@
       </wired-card>
       <hr />
       <wired-checkbox id="cbox" text="Checkbox label"></wired-checkbox>
+      <wired-checkbox id="cbox" text="Checkbox label" disabled></wired-checkbox>
       <hr />
       <wired-combo id="combo" selected="two">
         <wired-item value="one" text="Number one"></wired-item>
