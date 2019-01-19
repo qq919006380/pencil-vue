@@ -1,5 +1,5 @@
 <template>
-  <div id="btn" class="host" :class="{disabled:disabled}" @click='$emit("click",$event.target)'>
+  <div id="btn" class="host" :class="{disabled:disabled}" @click="$emit('click',$event.target)">
     <slot></slot>
     <div class="overlay">
       <svg id="svg"></svg>
@@ -15,7 +15,7 @@ export default {
     disabled: { type: Boolean, default: false }
   },
   mounted() {
-    this.$el.classList.remove('pending');
+    this.$el.classList.remove("pending");
     this.updated();
   },
   methods: {

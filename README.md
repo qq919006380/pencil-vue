@@ -9,8 +9,9 @@ npm i wired-v
 
 ### 使用
 ```
-import {wired-button} from 'wired-v'
 import Vue from 'vue'
+import {wired-button} from 'wired-v'
+import 'wired-v/dist/index.css'
 
 new Vue({
   el: '#app',
