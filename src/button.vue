@@ -22,7 +22,6 @@ export default {
     _clearNode(node) {
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
-        console.log("node", node);
       }
     },
     updated() {

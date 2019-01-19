@@ -59,7 +59,6 @@ export default {
       this._clearNode(svg);
       const s = this.$el.getBoundingClientRect();
       svg.setAttribute("width", s.width);
-      console.log("s.width :", s.width);
       svg.setAttribute("height", s.height);
       wired.rectangle(svg, 0, 0, s.width, s.height);
       this.$el.classList.remove("pending");
@@ -69,7 +68,6 @@ export default {
       }
     },
     _clearNode(node) {
-      console.log(1);
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
       }

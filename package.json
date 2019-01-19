@@ -1,8 +1,8 @@
 {
   "name": "wired-v",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "test": "^0.6.0",
     "vue": "^2.5.21",
@@ -20,6 +20,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx parcel index.html",
+    "build":"npx parcel build index.js --no-cache --no-minify",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "deploy:build": "bash deploy.sh"
