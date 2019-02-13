@@ -3,7 +3,7 @@
     <hr>
     <h3>使用方法</h3>
     <h4>预览</h4>
-    <wired-input value="sad"></wired-input>
+    <wired-input value="data"></wired-input>
     <wired-input type="password"></wired-input>
     <wired-input placeholder="Enter name"></wired-input>
     <wired-input placeholder="Disabled" disabled></wired-input>
