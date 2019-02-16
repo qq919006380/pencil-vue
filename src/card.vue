@@ -14,8 +14,8 @@ import { wired } from "./wired-lib.js";
 export default {
   props: {
     elevation: {
-      type: Number,
-      default: 1
+      type: String,
+      default: "1"
     }
   },
   mounted() {

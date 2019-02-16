@@ -20,6 +20,7 @@ module.exports = {
           children: [
             ['/components/button','button'],
             ['/components/input','input'],
+            ['/components/card','card'],
           ]
         },
   

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <hr>
     <h3>使用方法</h3>
     <h4>预览</h4>
     <wired-button>默认按钮</wired-button>
