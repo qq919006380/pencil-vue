@@ -19,17 +19,13 @@ export default {
       type: Boolean,
       default: false
     },
-    value: {
-      type: String,
-      default:"trues"
-    },
+    checked:{
+      type: Boolean,
+      default: false
+    }
     
   },
-  data() {
-    return {
-      checked: false,
-    };
-  },
+  
   mounted() {
     this.$el.classList.add("pending");
     this.updated();
