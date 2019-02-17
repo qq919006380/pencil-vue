@@ -4,7 +4,9 @@
       <div id="checkPanel" class="inline">
         <svg id="svg" width="0" height="0"></svg>
       </div>
-      <div class="inline">{{text}}</div>
+      <div class="inline">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -13,17 +15,19 @@
 import { wired } from "./wired-lib.js";
 export default {
   props: {
-    text: {
-      type: String
-    },
     disabled: {
       type: Boolean,
       default: false
-    }
+    },
+    value: {
+      type: String,
+      default:"trues"
+    },
+    
   },
   data() {
     return {
-      checked: false
+      checked: false,
     };
   },
   mounted() {
@@ -65,9 +69,7 @@ export default {
       }
       this.$el.classList.remove("pending");
     },
-    
 
-    
     _toggleCheck() {
       this.checked = !(this.checked || false);
       this.updated();
@@ -76,7 +78,7 @@ export default {
       while (node.hasChildNodes()) {
         node.removeChild(node.lastChild);
       }
-    },
+    }
   }
 };
 </script>

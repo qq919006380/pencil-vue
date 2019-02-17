@@ -12,11 +12,9 @@
 
 <script>
 import Button from "../../../src/button";
-import Card from "../../../src/card";
 export default {
   components: {
     "wired-button": Button,
-    "wired-card": Card
   },
   data() {
     return {

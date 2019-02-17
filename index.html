@@ -7,8 +7,14 @@
     <title>Document</title>
     <style>
       .card {
-        background: pink;
-        width: 500px
+        width: 30%;
+        display: inline-block;
+      }
+      .c1{
+        background: pink
+      }
+      .c2{
+        background: bisque
       }
     </style>
   </head>
@@ -30,11 +36,12 @@
         <wired-input value="value" readonly></wired-input>
         <wired-button @click="on">提交</wired-button>
         <wired-input value="value" error="请输入正确密码"></wired-input>
-        <wired-input v-model="data"></wired-input>
+        <!-- <wired-input v-model="data"></wired-input> -->
+        <test v-model='data'></test>
         <div>{{data}}</div>
       </form>
       <hr />
-      <wired-card class="card">
+      <wired-card class="card c1">
         <h4>Card 1</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -43,7 +50,7 @@
           aliquip ex ea commodo consequat.
         </p>
       </wired-card>
-      <wired-card>
+      <wired-card class="card c2">
         <h4>Card 2</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -52,7 +59,7 @@
           aliquip ex ea commodo consequat.
         </p>
       </wired-card>
-      <wired-card elevation=5>
+      <wired-card class="card" elevation=5>
         <h4>Card 3</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -62,8 +69,9 @@
         </p>
       </wired-card>
       <hr />
-      <wired-checkbox id="cbox" text="Checkbox label"></wired-checkbox>
-      <wired-checkbox id="cbox" text="Checkbox label" disabled></wired-checkbox>
+      <wired-checkbox id="cbox">多选框</wired-checkbox>
+      <wired-checkbox id="cbox" disabled>多选框</wired-checkbox>
+      <wired-checkbox id="cbox" v-model="checkbox">多选框:{{checkbox}}</wired-checkbox>
       <hr />
       <wired-combo id="combo" selected="two">
         <wired-item value="one" text="Number one"></wired-item>

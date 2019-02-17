@@ -21,6 +21,7 @@ module.exports = {
             ['/components/button','button'],
             ['/components/input','input'],
             ['/components/card','card'],
+            ['/components/checkbox','checkbox'],
           ]
         },
   

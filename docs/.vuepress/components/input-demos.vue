@@ -8,6 +8,7 @@
     <wired-input placeholder="Disabled" disabled></wired-input>
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
+    
     <hr>
     <h4>双向绑定</h4>
     <wired-input v-model="value"></wired-input><span>{{'数据：'+value}}</span>
