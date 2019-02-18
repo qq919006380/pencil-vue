@@ -23,9 +23,12 @@ export default {
       type: Boolean,
       default: false
     }
-    
   },
-  
+  data(){
+    return{
+      cc:this.checked
+    }
+  },
   mounted() {
     this.$el.classList.add("pending");
     this.updated();
@@ -54,7 +57,7 @@ export default {
       checkpaths.forEach(d => {
         d.style.strokeWidth = 2.5;
       });
-      if (this.checked) {
+      if (this.cc) {
         checkpaths.forEach(d => {
           d.style.display = "";
         });
@@ -67,7 +70,7 @@ export default {
     },
 
     _toggleCheck() {
-      this.checked = !(this.checked || false);
+      this.cc = !(this.cc || false);
       this.updated();
     },
     _clearNode(node) {

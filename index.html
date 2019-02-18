@@ -10,11 +10,11 @@
         width: 30%;
         display: inline-block;
       }
-      .c1{
-        background: pink
+      .c1 {
+        background: pink;
       }
-      .c2{
-        background: bisque
+      .c2 {
+        background: bisque;
       }
     </style>
   </head>
@@ -26,7 +26,7 @@
       <wired-button elevation="5">button</wired-button>
       <wired-button disabled>button</wired-button>
       <hr />
-      <hr>
+      <hr />
       <form action="ss">
         <wired-Input name="用户名" @input="on"></wired-Input>
         <wired-input type="password"></wired-input>
@@ -37,8 +37,8 @@
         <wired-button @click="on">提交</wired-button>
         <wired-input value="value" error="请输入正确密码"></wired-input>
         <!-- <wired-input v-model="data"></wired-input> -->
-        <test v-model='data'></test>
-        <div>{{data}}</div>
+        <test v-model="data"></test>
+        <div>{{ data }}</div>
       </form>
       <hr />
       <wired-card class="card c1">
@@ -59,7 +59,7 @@
           aliquip ex ea commodo consequat.
         </p>
       </wired-card>
-      <wired-card class="card" elevation=5>
+      <wired-card class="card" elevation="5">
         <h4>Card 3</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -71,7 +71,7 @@
       <hr />
       <wired-checkbox id="cbox">多选框</wired-checkbox>
       <wired-checkbox id="cbox" disabled>多选框</wired-checkbox>
-      <wired-checkbox id="cbox" checked>多选框:{{checkbox}}</wired-checkbox>
+      <wired-checkbox id="cbox" checked>多选框:{{ checkbox }}</wired-checkbox>
       <hr />
       <wired-combo id="combo" selected="two">
         <wired-item value="one" text="Number one"></wired-item>
@@ -79,6 +79,10 @@
         <wired-item value="three" text="Number three"></wired-item>
         <wired-item value="three" text="Number three"></wired-item>
       </wired-combo>
+      <wired-popover trigger="hover" text="asdasd">
+        <template slot="content">弹出内容</template>
+        <wired-button>btn</wired-button>
+      </wired-popover>
     </div>
     <script src="./src/app.js"></script>
   </body>
