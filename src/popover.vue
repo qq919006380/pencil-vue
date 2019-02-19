@@ -3,17 +3,18 @@
     <!-- popover弹出层 -->
     <div
       ref="contentWrapper"
-      class="content-wrappers host"
+      class="content-wrapper host"
       v-if="visible"
       :class="{[`position-${position}`]:true}"
     >
-      <slot name="content" :close="close"></slot>
       <div class="overlay">
         <svg id="svg"></svg>
       </div>
-      <span style="position: relative;">测试测试</span>
+      <span style="position: relative;">
+        <slot name="content" :close="close"></slot>
+      </span>
     </div>
-    <span ref="triggerWrapper" style="display: inline-block;">
+    <span id="triggerWrapper" ref="triggerWrapper" :style="{'display':'inline-block'}">
       <slot></slot>
     </span>
   </div>
@@ -21,7 +22,6 @@
 
 <script>
 import { wired } from "./wired-lib.js";
-
 export default {
   name: "GuluPopover",
   props: {
@@ -43,12 +43,19 @@ export default {
   data() {
     return {
       visible: false,
-      offset:14,
-      _dirty:false
+      offset: 14,
+      _dirty: false
     };
   },
   mounted() {
     this.addPopoverListeners();
+    this.$nextTick(function() {
+      var triggerWrapper = this.$el.querySelector("#triggerWrapper");
+      triggerWrapper.style.width =
+        this.$slots.default[1].elm.clientWidth + "px";
+      triggerWrapper.style.height =
+        this.$slots.default[1].elm.clientHeight + "px";
+    });
   },
   beforeDestroy() {
     this.putBackContent();
@@ -79,13 +86,11 @@ export default {
 
     _layout(p) {
       const svg = p.querySelector("#svg");
-      console.log(svg)
-      const host = p
-      console.log(p)
+      const host = p;
       var s = host.getBoundingClientRect();
       var w = s.width;
       var h = s.height;
-      
+
       switch (this.position) {
         case "left":
         case "right":
@@ -95,7 +100,7 @@ export default {
           h = h + this.offset;
           break;
       }
-      
+
       svg.setAttribute("width", w);
       svg.setAttribute("height", h);
       var points = [];
@@ -176,16 +181,21 @@ export default {
     positionContent() {
       const { contentWrapper, triggerWrapper } = this.$refs;
       document.body.appendChild(contentWrapper);
-      this._layout(contentWrapper)
+      this._layout(contentWrapper);
       const {
         width,
         height,
         top,
         left
       } = triggerWrapper.getBoundingClientRect();
+      console.log(triggerWrapper)
+      console.log(triggerWrapper.getBoundingClientRect())
       const { height: height2 } = contentWrapper.getBoundingClientRect();
       let positions = {
-        top: { top: top + window.scrollY, left: left + window.scrollX },
+        top: {
+          top: top + window.scrollY,
+          left: left + window.scrollX
+        },
         bottom: {
           top: top + height + window.scrollY,
           left: left + window.scrollX
@@ -201,6 +211,7 @@ export default {
       };
       contentWrapper.style.left = positions[this.position].left + "px";
       contentWrapper.style.top = positions[this.position].top + "px";
+      console.log("left：" + positions[this.position].left + "px");
     },
     onClickDocument(e) {
       if (
@@ -242,33 +253,32 @@ export default {
   }
 };
 </script>
-
 <style scoped lang="scss">
 $border-color: #333;
 $border-radius: 4px;
 .popover {
   display: inline-block;
   vertical-align: top;
-  position: relative;
+  // position: relative;
 }
 .content-wrapper {
   position: absolute;
-  border: 1px solid $border-color;
+  // border: 1px solid $border-color;
   border-radius: $border-radius;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  // filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   background: white;
   padding: 0.5em 1em;
   max-width: 20em;
   word-break: break-all;
   &::before,
-  &::after {
-    content: "";
-    display: block;
-    border: 10px solid transparent;
-    width: 0;
-    height: 0;
-    position: absolute;
-  }
+  // &::after {
+  //   content: "";
+  //   display: block;
+  //   border: 10px solid transparent;
+  //   width: 0;
+  //   height: 0;
+  //   position: absolute;
+  // }
   &.position-top {
     transform: translateY(-100%);
     margin-top: -10px;
@@ -342,7 +352,8 @@ $border-radius: 4px;
     }
   }
 }
-
+</style>
+<style scoped >
 .host {
   display: block;
   position: absolute;
@@ -357,7 +368,6 @@ $border-radius: 4px;
   font-size: 9pt;
   line-height: 1;
 }
-
 .overlay {
   position: absolute;
   top: 0;
@@ -366,19 +376,12 @@ $border-radius: 4px;
   bottom: 0;
   pointer-events: none;
 }
-
 svg {
   display: block;
 }
-
 .host >>> path {
   stroke-width: 0.7;
   stroke: var(--wired-tooltip-border-color, currentColor);
   fill: var(--wired-tooltip-background, rgba(255, 255, 255, 0.9));
 }
-
-// #container {
-//   position: relative;
-//   padding: 8px;
-// }
 </style>

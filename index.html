@@ -16,11 +16,15 @@
       .c2 {
         background: bisque;
       }
+      .popover{
+          margin: 0 100px
+        }
     </style>
   </head>
 
   <body>
     <div id="app">
+      <wired-button>按钮</wired-button>
       <wired-button class="a">button</wired-button>
       <wired-button elevation="5">button</wired-button>
       <wired-button elevation="5">button</wired-button>
@@ -36,8 +40,7 @@
         <wired-input value="value" readonly></wired-input>
         <wired-button @click="on">提交</wired-button>
         <wired-input value="value" error="请输入正确密码"></wired-input>
-        <!-- <wired-input v-model="data"></wired-input> -->
-        <test v-model="data"></test>
+        <wired-input v-model="data"></wired-input>
         <div>{{ data }}</div>
       </form>
       <hr />
@@ -80,10 +83,30 @@
         <wired-item value="three" text="Number three"></wired-item>
       </wired-combo>
       <hr>
-      <wired-popover  text="asdasd" position='right'>
-        <template slot="content">弹出内容</template>
-        <button>btn</button>
+
+      <wired-popover position='top'  class="popover">
+        <template slot="content">弹出的内容</template>
+        <wired-button>长长长长长长长长长长长</wired-button>
+      </wired-popover><br>
+      <wired-popover position='bottom'  class="popover">
+        <template slot="content">弹出的内容</template >
+        <wired-button>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长</wired-button>
+      </wired-popover><br>
+      <wired-popover position='left'  class="popover">
+        <template slot="content">弹出的内容</template>
+        <wired-button>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></wired-button>
+      </wired-popover><br>
+      <wired-popover position='right'  class="popover">
+        <template slot="content">弹出的内容</template>
+        <wired-button>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></wired-button>
+      </wired-popover><br>
+      <wired-popover position='right' class="popover">
+        <template slot="content">弹出内容asdasdsd</template>
+        <wired-button>btn</wired-button>
       </wired-popover>
+      <hr>
+      
+      <!-- <test>1asdasd</test> -->
     </div>
     <script src="./src/app.js"></script>
   </body>
