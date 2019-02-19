@@ -1,22 +1,18 @@
 <template>
   <div class="popover" ref="popover">
-    <!-- 原生弹出框 -->
-    <div class="host">
-      <div
-        ref="contentWrapper"
-        class="content-wrapper"
-        v-if="visible"
-        :class="{[`position-${position}`]:true}"
-      >
-        <slot name="content" :close="close"></slot>
-        <!-- svg -->
-        <div class="overlay">
-          <svg id="svg"></svg>
-        </div>
-        <span style="position: relative;"></span>
+    <!-- popover弹出层 -->
+    <div
+      ref="contentWrapper"
+      class="content-wrappers host"
+      v-if="visible"
+      :class="{[`position-${position}`]:true}"
+    >
+      <slot name="content" :close="close"></slot>
+      <div class="overlay">
+        <svg id="svg"></svg>
       </div>
+      <span style="position: relative;">测试测试</span>
     </div>
-
     <span ref="triggerWrapper" style="display: inline-block;">
       <slot></slot>
     </span>
@@ -25,6 +21,7 @@
 
 <script>
 import { wired } from "./wired-lib.js";
+
 export default {
   name: "GuluPopover",
   props: {
@@ -46,8 +43,8 @@ export default {
   data() {
     return {
       visible: false,
-      offset: 14,
-      _dirty: false
+      offset:14,
+      _dirty:false
     };
   },
   mounted() {
@@ -79,14 +76,16 @@ export default {
         node.removeChild(node.lastChild);
       }
     },
-    _layout() {
-      const svg = this.$el.querySelector("#svg");
-      const host = this.$el.querySelector(".host");
-      // this._clearNode(svg);
-      var s = host.getBoundingClientRect();
 
+    _layout(p) {
+      const svg = p.querySelector("#svg");
+      console.log(svg)
+      const host = p
+      console.log(p)
+      var s = host.getBoundingClientRect();
       var w = s.width;
       var h = s.height;
+      
       switch (this.position) {
         case "left":
         case "right":
@@ -96,7 +95,7 @@ export default {
           h = h + this.offset;
           break;
       }
-      console.log(svg)
+      
       svg.setAttribute("width", w);
       svg.setAttribute("height", h);
       var points = [];
@@ -177,6 +176,7 @@ export default {
     positionContent() {
       const { contentWrapper, triggerWrapper } = this.$refs;
       document.body.appendChild(contentWrapper);
+      this._layout(contentWrapper)
       const {
         width,
         height,
@@ -225,12 +225,10 @@ export default {
         this.positionContent();
         document.addEventListener("click", this.onClickDocument);
       });
-      this._layout();
     },
     close() {
       this.visible = false;
       document.removeEventListener("click", this.onClickDocument);
-      // this._layout();
     },
     onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
@@ -373,14 +371,14 @@ svg {
   display: block;
 }
 
-path {
+.host >>> path {
   stroke-width: 0.7;
   stroke: var(--wired-tooltip-border-color, currentColor);
   fill: var(--wired-tooltip-background, rgba(255, 255, 255, 0.9));
 }
 
-#container {
-  position: relative;
-  padding: 8px;
-}
+// #container {
+//   position: relative;
+//   padding: 8px;
+// }
 </style>
