@@ -29,20 +29,20 @@ export default {
   data() {
     return {
       content: `
-    <wired-popover class="popover">
-      <template slot="content">弹出的内容</template>
-      <wired-button>click激活</wired-button>
-    </wired-popover>
-    <wired-popover position="bottom" class="popover">
-      <template slot="content">弹出的内容</template>
-      <wired-button>不同方位</wired-button>
-    </wired-popover>
-    <wired-popover trigger="hover" class="popover">
-      <template slot="content">弹出的内容</template>
-      <wired-button>hover激活</wired-button>
-    </wired-popover>
+        <wired-popover class="popover">
+          <template slot="content">弹出的内容</template>
+          <wired-button>click激活</wired-button>
+        </wired-popover>
+        <wired-popover position="bottom" class="popover">
+          <template slot="content">弹出的内容</template>
+          <wired-button>不同方位</wired-button>
+        </wired-popover>
+        <wired-popover trigger="hover" class="popover">
+          <template slot="content">弹出的内容</template>
+          <wired-button>hover激活</wired-button>
+        </wired-popover>
     `
-        .replace(/\t+| +/g, "")
+        .replace(/^ {8}/gm, "")
         .trim()
     };
   }

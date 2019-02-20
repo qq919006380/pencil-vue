@@ -2,7 +2,6 @@
   <div>
     <h3>使用方法</h3>
     <h4>预览</h4>
-    value:{{}}
     <wired-checkbox id="cbox">Checkbox label-1</wired-checkbox>
     <wired-checkbox id="cbox" checked>Checkbox label-2</wired-checkbox>
     <wired-checkbox id="cbox" disabled>Checkbox label-3</wired-checkbox>

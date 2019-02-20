@@ -28,12 +28,12 @@ export default {
     return {
       value: "1",
       content: `
-    <wired-input value="sad"></wired-input>
-    <wired-input type="password"></wired-input>
-    <wired-input placeholder="Enter name"></wired-input>
-    <wired-input placeholder="Disabled" disabled></wired-input>
+        <wired-input value="data"></wired-input>
+        <wired-input type="password"></wired-input>
+        <wired-input placeholder="Enter name"></wired-input>
+        <wired-input placeholder="Disabled" disabled></wired-input>
     `
-        .replace(/\t+| +/g, "")
+        .replace(/^ {8}/gm, "")
         .trim(),
         content2:`
         data:{
@@ -41,8 +41,8 @@ export default {
         }
 
         <wired-input v-model="value"></wired-input><span>{{'数据：'+value}}</span>
-        `.replace(/\t+| +/g, "")
-        .trim(),
+        `.replace(/^ {8}/gm, "")
+        .trim()
     };
   }
 };

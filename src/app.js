@@ -10,6 +10,7 @@ import Popover from "./popover";
 import Toast from "./toast";
 import Test from "./test";
 import plugin from "./plugin";
+import { SSL_OP_NO_SSLv3 } from "constants";
 Vue.use(plugin);
 
 Vue.component("wired-button", Button);
@@ -31,11 +32,28 @@ new Vue({
     };
   },
   methods: {
-    on(e) {
-      console.log(e);
+    on() {
+      this.$toast("点击弹出提示");
     },
-    success() {
-      this.$toast('点击弹出提示',{position:'bottom'})
+    on1() {
+      this.$toast("点击弹出提示", { position: "top" });
+    },
+    on2() {
+      this.$toast("点击弹出提示asdasd", { position: "bottom" });
+    },
+    on3() {
+      this.$toast("点击弹出提示asdasd", { position: "middle" });
+    },
+    on4() {this.$toast("点击弹出提示asdasd", { autoClose: false });},
+    on5() {
+      this.$toast("你知道我在等你吗？", {
+        closeButton: {
+          text: "知道了",
+          callback: () => {
+            console.log("他说知道了");
+          }
+        }
+      });
     }
   }
 });

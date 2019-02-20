@@ -1,26 +1,32 @@
 <template>
-  <div class="wrapper" :class="toastClasses">
-    <wired-card>asd</wired-card>
-    <div class="toast" ref="toast">
+  <div class="wrapper gulu-toast" :class="toastClasses">
+    <div class="toast host" ref="toast">
       <div class="message">
         <slot v-if="!enableHtml"></slot>
         <div v-else v-html="$slots.default[0]"></div>
       </div>
       <div class="line" ref="line"></div>
       <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
+      <div class="overlay">
+        <svg id="svg"></svg>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Card from "./card";
+import { wired } from "./wired-lib.js";
 
 export default {
   name: "GuluToast",
   props: {
+    elevation: {
+      type: String,
+      default: "1"
+    },
     autoClose: {
       type: [Boolean, Number],
-      default: 50,
+      default: 2,
       validator(value) {
         return value === false || typeof value === "number";
       }
@@ -47,9 +53,6 @@ export default {
       }
     }
   },
-  components: {
-    "wired-card": Card,
-  },
   mounted() {
     this.updateStyles();
     this.execAutoClose();
@@ -62,8 +65,51 @@ export default {
     }
   },
   methods: {
+    updated() {
+      const svg = this.$el.querySelector("#svg");
+      // this._clearNode(svg);
+      var s = this.$el.getBoundingClientRect();
+      var elev = Math.min(Math.max(1, this.elevation), 5);
+      var w = s.width + (elev - 1) * 2;
+      var h = s.height + (elev - 1) * 2;
+      svg.setAttribute("width", w);
+      svg.setAttribute("height", h);
+      wired.rectangle(svg, 0, 0, s.width, s.height);
+      for (var i = 1; i < elev; i++) {
+        wired.line(
+          svg,
+          i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          s.height + i * 2
+        ).style.opacity = (85 - i * 10) / 100;
+        wired.line(
+          svg,
+          s.width + i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          i * 2
+        ).style.opacity = (85 - i * 10) / 100;
+        wired.line(
+          svg,
+          i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          s.height + i * 2
+        ).style.opacity = (85 - i * 10) / 100;
+        wired.line(
+          svg,
+          s.width + i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          i * 2
+        ).style.opacity = (85 - i * 10) / 100;
+      }
+      this.$el.classList.remove("pending");
+    },
     updateStyles() {
       this.$nextTick(() => {
+        this.updated();
         this.$refs.line.style.height =
           this.$refs.toast.getBoundingClientRect().height + "px";
       });
@@ -92,7 +138,7 @@ export default {
 <style scoped lang='scss'>
 $font-size: 14px;
 $toast-min-height: 40px;
-$toast-bg: rgba(0, 0, 0, 0.75);
+$toast-bg: rgba(250, 250, 250, 0.75);
 @keyframes slide-up {
   0% {
     opacity: 0;
@@ -155,7 +201,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   min-height: $toast-min-height;
   line-height: 1.8;
   display: flex;
-  color: white;
+  // color: white;
   align-items: center;
   background: $toast-bg;
   border-radius: 4px;
@@ -173,5 +219,34 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     border-left: 1px solid #666;
     margin-left: 16px;
   }
+}
+</style>
+<style scoped>
+.host {
+  /* display: inline-block;
+  position: relative;
+  padding: 5px; */
+}
+
+.host.pending {
+  opacity: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+svg {
+  display: block;
+}
+svg >>> path {
+  stroke: currentColor;
+  stroke-width: 0.7;
+  fill: transparent;
 }
 </style>

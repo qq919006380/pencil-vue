@@ -19,11 +19,11 @@ export default {
   data() {
     return {
       content: `
-    <wired-button>默认按钮</wired-button>
-    <wired-button elevation='3'>elevation</wired-button>
-    <wired-button disabled>disabled</wired-button>
+        <wired-button>默认按钮</wired-button>
+        <wired-button elevation='3'>elevation</wired-button>
+        <wired-button disabled>disabled</wired-button>
     `
-        .replace(/\t+| +/g, "")
+        .replace(/^ {8}/gm, "")
         .trim()
     };
   }

@@ -76,38 +76,41 @@
       <wired-checkbox id="cbox" disabled>多选框</wired-checkbox>
       <wired-checkbox id="cbox" checked>多选框:{{ checkbox }}</wired-checkbox>
       <hr />
-      <wired-combo id="combo" selected="two">
+      <!-- <wired-combo id="combo" selected="two">
         <wired-item value="one" text="Number one"></wired-item>
         <wired-item value="two" text="Number two"></wired-item>
         <wired-item value="three" text="Number three"></wired-item>
         <wired-item value="three" text="Number three"></wired-item>
-      </wired-combo>
+      </wired-combo> -->
       <hr>
 
       <wired-popover position='top'  class="popover">
         <template slot="content">弹出的内容</template>
         <wired-button>长长长长长长长长长长长</wired-button>
-      </wired-popover><br>
+      </wired-popover>
       <wired-popover position='bottom'  class="popover">
         <template slot="content">弹出的内容</template >
-        <wired-button>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长</wired-button>
-      </wired-popover><br>
+        <wired-button>长</wired-button>
+      </wired-popover>
       <wired-popover position='left'  class="popover">
         <template slot="content">弹出的内容</template>
-        <wired-button>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></wired-button>
-      </wired-popover><br>
+        <wired-button>高高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></wired-button>
+      </wired-popover>
       <wired-popover position='right'  class="popover">
         <template slot="content">弹出的内容</template>
-        <wired-button>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></wired-button>
-      </wired-popover><br>
+        <wired-button>高</wired-button>
+      </wired-popover>
       <wired-popover position='right' class="popover">
         <template slot="content">弹出内容asdasdsd</template>
         <wired-button>btn</wired-button>
       </wired-popover>
       <hr>
-      <button @click="success">成功</button>
-      <wired-card>asd</wired-card>
-      <!-- <test>1asdasd</test> -->
+      <button @click="on">默认</button>
+      <button @click="on1">上方</button>
+      <button @click="on2">下方</button>
+      <button @click="on3">居中</button>
+      <button @click="on4">不关闭</button>
+      <button @click="on5">关闭按钮</button>
     </div>
     <script src="./src/app.js"></script>
   </body>
