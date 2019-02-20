@@ -2,9 +2,9 @@
   <div>
     <h3>使用方法</h3>
     <h4>预览</h4>
-    <wired-checkbox id="cbox">Checkbox label-1</wired-checkbox>
-    <wired-checkbox id="cbox" checked>Checkbox label-2</wired-checkbox>
-    <wired-checkbox id="cbox" disabled>Checkbox label-3</wired-checkbox>
+    <pc-checkbox id="cbox">Checkbox label-1</pc-checkbox>
+    <pc-checkbox id="cbox" checked>Checkbox label-2</pc-checkbox>
+    <pc-checkbox id="cbox" disabled>Checkbox label-3</pc-checkbox>
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
   </div>
@@ -13,16 +13,16 @@
 import Checkbox from "../../../src/checkbox";
 export default {
   components: {
-    "wired-checkbox": Checkbox
+    "pc-checkbox": Checkbox
   },
   data() {
     return {
       checked1: true,
       checked2: true,
       content: `
-    <wired-checkbox id="cbox">Checkbox label-1</wired-checkbox>
-    <wired-checkbox id="cbox" checked>Checkbox label-2</wired-checkbox>
-    <wired-checkbox id="cbox" disabled>Checkbox label-3</wired-checkbox>
+    <pc-checkbox id="cbox">Checkbox label-1</pc-checkbox>
+    <pc-checkbox id="cbox" checked>Checkbox label-2</pc-checkbox>
+    <pc-checkbox id="cbox" disabled>Checkbox label-3</pc-checkbox>
     `
         .replace(/\t+| +/g, "")
         .trim()

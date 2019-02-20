@@ -2,16 +2,16 @@
   <div>
     <h3>使用方法</h3>
     <h4>预览</h4>
-    <wired-input value="data"></wired-input>
-    <wired-input type="password"></wired-input>
-    <wired-input placeholder="Enter name"></wired-input>
-    <wired-input placeholder="Disabled" disabled></wired-input>
+    <pc-input value="data"></pc-input>
+    <pc-input type="password"></pc-input>
+    <pc-input placeholder="Enter name"></pc-input>
+    <pc-input placeholder="Disabled" disabled></pc-input>
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
     
     <hr>
     <h4>双向绑定</h4>
-    <wired-input v-model="value"></wired-input><span>{{'数据：'+value}}</span>
+    <pc-input v-model="value"></pc-input><span>{{'数据：'+value}}</span>
     <h4>代码</h4>
     <pre><code>{{content2}}</code></pre>
     
@@ -22,16 +22,16 @@
 import Input from "../../../src/input";
 export default {
   components: {
-    "wired-input": Input
+    "pc-input": Input
   },
   data() {
     return {
       value: "1",
       content: `
-        <wired-input value="data"></wired-input>
-        <wired-input type="password"></wired-input>
-        <wired-input placeholder="Enter name"></wired-input>
-        <wired-input placeholder="Disabled" disabled></wired-input>
+        <pc-input value="data"></pc-input>
+        <pc-input type="password"></pc-input>
+        <pc-input placeholder="Enter name"></pc-input>
+        <pc-input placeholder="Disabled" disabled></pc-input>
     `
         .replace(/^ {8}/gm, "")
         .trim(),
@@ -40,7 +40,7 @@ export default {
           value: '1'
         }
 
-        <wired-input v-model="value"></wired-input><span>{{'数据：'+value}}</span>
+        <pc-input v-model="value"></pc-input><span>{{'数据：'+value}}</span>
         `.replace(/^ {8}/gm, "")
         .trim()
     };

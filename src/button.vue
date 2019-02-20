@@ -10,6 +10,7 @@
 <script>
 import { wired } from "./wired-lib.js";
 export default {
+  name: "pencil-button",
   props: {
     elevation: { type: [Number, String], default: 1 },
     disabled: { type: Boolean, default: false }

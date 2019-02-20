@@ -23,7 +23,7 @@
 <script>
 import { wired } from "./wired-lib.js";
 export default {
-  name: "GuluPopover",
+  name: "pencil-popover",
   props: {
     position: {
       type: String,

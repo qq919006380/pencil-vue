@@ -9,7 +9,7 @@
     <pre><code>{{content}}</code></pre>
     <h3>设置关闭按钮</h3>
     <h4>预览</h4>
-    <wired-button @click="autoClose">提示不自动关闭</wired-button>
+    <wired-button @click="autoClose">设置关闭时间</wired-button>
     <wired-button @click="onClickButton">上方弹出</wired-button>
     <h4>代码</h4>
     <pre><code>{{content2}}</code></pre>
@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       content: `
-
         <style>
           .gulu-toast {
             z-index: 30;
@@ -48,24 +47,24 @@ export default {
           }
         </style>
 
-        <wired-button @click="autoClose">提示不自动关闭</wired-button>
+        <wired-button @click="autoClose">设置关闭时间</wired-button>
         <wired-button @click="onClickButton">上方弹出</wired-button>
 
         methods: {
-            autoClose() {
-              this.$toast("提示不自动关闭", { autoClose: false });
-            },
-            onClickButton() {
-              this.$toast("点击弹出提示", {
-                closeButton: {
-                  text: "确定",
-                  callback: () => {
-                    this.date=new Date()
-                    console.log("To do something...") //To do something...
-                  }
+          autoClose() {
+            this.$toast('3秒后关闭', { autoClose: 3 });
+          },
+          onClickButton() {
+            this.$toast("点击弹出提示", {
+              closeButton: {
+                text: "确定",
+                callback: () => {
+                  this.date = new Date();
+                  console.log("To do something..."); //To do something...
                 }
-              });
-            }
+              }
+            });
+          }
         }
     `
         .replace(/^ {8}/gm, "")
@@ -74,7 +73,7 @@ export default {
   },
   methods: {
     autoClose() {
-      this.$toast("提示不自动关闭", { autoClose: false });
+      this.$toast('3秒后关闭', { autoClose: 3 });
     },
     onClickButton() {
       this.$toast("点击弹出提示", {

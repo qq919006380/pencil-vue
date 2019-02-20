@@ -13,14 +13,14 @@ import plugin from "./plugin";
 import { SSL_OP_NO_SSLv3 } from "constants";
 Vue.use(plugin);
 
-Vue.component("wired-button", Button);
-Vue.component("wired-input", Input);
-Vue.component("wired-card", Card);
-Vue.component("wired-checkbox", Checkbox);
-Vue.component("wired-combo", Combo);
-Vue.component("wired-item", Item);
-Vue.component("wired-popover", Popover);
-Vue.component("wired-toast", Toast);
+Vue.component("pc-button", Button);
+Vue.component("pc-input", Input);
+Vue.component("pc-card", Card);
+Vue.component("pc-checkbox", Checkbox);
+Vue.component("pc-combo", Combo);
+Vue.component("pc-item", Item);
+Vue.component("pc-popover", Popover);
+Vue.component("pc-toast", Toast);
 Vue.component("test", Test);
 
 new Vue({

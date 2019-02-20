@@ -24,27 +24,27 @@
 
   <body>
     <div id="app">
-      <wired-button>按钮</wired-button>
-      <wired-button class="a">button</wired-button>
-      <wired-button elevation="5">button</wired-button>
-      <wired-button elevation="5">button</wired-button>
-      <wired-button disabled>button</wired-button>
+      <pc-button>按钮</pc-button>
+      <pc-button class="a">button</pc-button>
+      <pc-button elevation="5">button</pc-button>
+      <pc-button elevation="5">button</pc-button>
+      <pc-button disabled>button</pc-button>
       <hr />
       <hr />
       <form action="ss">
-        <wired-Input name="用户名" @input="on"></wired-Input>
-        <wired-input type="password"></wired-input>
-        <wired-input placeholder="Enter name"></wired-input>
-        <wired-input placeholder="Disabled" disabled></wired-input>
-        <wired-input value="" required></wired-input>
-        <wired-input value="value" readonly></wired-input>
-        <wired-button @click="on">提交</wired-button>
-        <wired-input value="value" error="请输入正确密码"></wired-input>
-        <wired-input v-model="data"></wired-input>
+        <pc-Input name="用户名" @input="on"></pc-Input>
+        <pc-input type="password"></pc-input>
+        <pc-input placeholder="Enter name"></pc-input>
+        <pc-input placeholder="Disabled" disabled></pc-input>
+        <pc-input value="" required></pc-input>
+        <pc-input value="value" readonly></pc-input>
+        <pc-button @click="on">提交</pc-button>
+        <pc-input value="value" error="请输入正确密码"></pc-input>
+        <pc-input v-model="data"></pc-input>
         <div>{{ data }}</div>
       </form>
       <hr />
-      <wired-card class="card c1">
+      <pc-card class="card c1">
         <h4>Card 1</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -52,8 +52,8 @@
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </p>
-      </wired-card>
-      <wired-card class="card c2">
+      </pc-card>
+      <pc-card class="card c2">
         <h4>Card 2</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -61,8 +61,8 @@
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </p>
-      </wired-card>
-      <wired-card class="card" elevation="5">
+      </pc-card>
+      <pc-card class="card" elevation="5">
         <h4>Card 3</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -70,40 +70,40 @@
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </p>
-      </wired-card>
+      </pc-card>
       <hr />
-      <wired-checkbox id="cbox">多选框</wired-checkbox>
-      <wired-checkbox id="cbox" disabled>多选框</wired-checkbox>
-      <wired-checkbox id="cbox" checked>多选框:{{ checkbox }}</wired-checkbox>
+      <pc-checkbox id="cbox">多选框</pc-checkbox>
+      <pc-checkbox id="cbox" disabled>多选框</pc-checkbox>
+      <pc-checkbox id="cbox" checked>多选框:{{ checkbox }}</pc-checkbox>
       <hr />
-      <!-- <wired-combo id="combo" selected="two">
-        <wired-item value="one" text="Number one"></wired-item>
-        <wired-item value="two" text="Number two"></wired-item>
-        <wired-item value="three" text="Number three"></wired-item>
-        <wired-item value="three" text="Number three"></wired-item>
-      </wired-combo> -->
+      <!-- <pc-combo id="combo" selected="two">
+        <pc-item value="one" text="Number one"></pc-item>
+        <pc-item value="two" text="Number two"></pc-item>
+        <pc-item value="three" text="Number three"></pc-item>
+        <pc-item value="three" text="Number three"></pc-item>
+      </pc-combo> -->
       <hr>
 
-      <wired-popover position='top'  class="popover">
+      <pc-popover position='top'  class="popover">
         <template slot="content">弹出的内容</template>
-        <wired-button>长长长长长长长长长长长</wired-button>
-      </wired-popover>
-      <wired-popover position='bottom'  class="popover">
+        <pc-button>长长长长长长长长长长长</pc-button>
+      </pc-popover>
+      <pc-popover position='bottom'  class="popover">
         <template slot="content">弹出的内容</template >
-        <wired-button>长</wired-button>
-      </wired-popover>
-      <wired-popover position='left'  class="popover">
+        <pc-button>长</pc-button>
+      </pc-popover>
+      <pc-popover position='left'  class="popover">
         <template slot="content">弹出的内容</template>
-        <wired-button>高高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></wired-button>
-      </wired-popover>
-      <wired-popover position='right'  class="popover">
+        <pc-button>高高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></pc-button>
+      </pc-popover>
+      <pc-popover position='right'  class="popover">
         <template slot="content">弹出的内容</template>
-        <wired-button>高</wired-button>
-      </wired-popover>
-      <wired-popover position='right' class="popover">
+        <pc-button>高</pc-button>
+      </pc-popover>
+      <pc-popover position='right' class="popover">
         <template slot="content">弹出内容asdasdsd</template>
-        <wired-button>btn</wired-button>
-      </wired-popover>
+        <pc-button>btn</pc-button>
+      </pc-popover>
       <hr>
       <button @click="on">默认</button>
       <button @click="on1">上方</button>

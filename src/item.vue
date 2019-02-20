@@ -7,6 +7,7 @@
 <script>
 import { wired } from "./wired-lib.js";
 export default {
+  name: "pencil-item",
   props: {
     text: {
       type: String

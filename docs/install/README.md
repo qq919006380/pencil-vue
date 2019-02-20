@@ -1,3 +1,5 @@
 # 安装
 
-install
+```
+npm install gulu
+```

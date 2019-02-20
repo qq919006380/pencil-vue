@@ -21,10 +21,10 @@
 
 <script>
 import { wired } from "./wired-lib.js";
-
 import "wired-card";
 import "wired-item";
 export default {
+  name: "pencil-combo",
   data() {
     return {
       value: "11asdas",

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper gulu-toast" :class="toastClasses">
+  <div class="wrapper pencil-toast" :class="toastClasses">
     <div class="toast host" ref="toast">
       <div class="message">
         <slot v-if="!enableHtml"></slot>
@@ -18,7 +18,7 @@
 import { wired } from "./wired-lib.js";
 
 export default {
-  name: "GuluToast",
+  name: "pencil-toast",
   props: {
     elevation: {
       type: String,
