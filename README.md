@@ -11,7 +11,7 @@ npm i pencil-vue
 ### 使用
 ```
 import Vue from 'vue'
-import {pencil-button} from 'pencil-vue'
+import {button} from 'pencil-vue'
 import 'pencil-vue/dist/index.css'
 
 new Vue({
