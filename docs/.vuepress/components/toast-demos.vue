@@ -2,15 +2,15 @@
   <div>
     <h3>使用方法</h3>
     <h4>预览</h4>
-    <wired-button @click="$toast('点击弹出提示', { position: 'top' })">上方弹出</wired-button>
-    <wired-button @click="$toast('点击弹出提示', { position: 'bottom' })">下方弹出</wired-button>
-    <wired-button @click="$toast('点击弹出提示', { position: 'middle' })">中间弹出</wired-button>
+    <pc-button @click="$toast('点击弹出提示', { position: 'top' })">上方弹出</pc-button>
+    <pc-button @click="$toast('点击弹出提示', { position: 'bottom' })">下方弹出</pc-button>
+    <pc-button @click="$toast('点击弹出提示', { position: 'middle' })">中间弹出</pc-button>
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
     <h3>设置关闭按钮</h3>
     <h4>预览</h4>
-    <wired-button @click="autoClose">设置关闭时间</wired-button>
-    <wired-button @click="onClickButton">上方弹出</wired-button>
+    <pc-button @click="autoClose">设置关闭时间</pc-button>
+    <pc-button @click="onClickButton">上方弹出</pc-button>
     <h4>代码</h4>
     <pre><code>{{content2}}</code></pre>
   </div>
@@ -24,31 +24,31 @@ import Button from "../../../src/button";
 import Toast from "../../../src/toast";
 export default {
   components: {
-    "wired-button": Button
+    "pc-button": Button
   },
   data() {
     return {
       content: `
         <style>
-          .gulu-toast {
+          .pencil-toast {
             z-index: 30;
           }
         </style>
-        <wired-button @click="$toast('点击弹出提示', { position: 'top' })">上方弹出</wired-button>
-        <wired-button @click="$toast('点击弹出提示', { position: 'bottom' })">下方弹出</wired-button>
-        <wired-button @click="$toast('点击弹出提示', { position: 'middle' })">中间弹出</wired-button>
+        <pc-button @click="$toast('点击弹出提示', { position: 'top' })">上方弹出</pc-button>
+        <pc-button @click="$toast('点击弹出提示', { position: 'bottom' })">下方弹出</pc-button>
+        <pc-button @click="$toast('点击弹出提示', { position: 'middle' })">中间弹出</pc-button>
     `
         .replace(/^ {8}/gm, "")
         .trim(),
       content2: `
         <style>
-          .gulu-toast {
+          .pencil-toast {
             z-index: 30;
           }
         </style>
 
-        <wired-button @click="autoClose">设置关闭时间</wired-button>
-        <wired-button @click="onClickButton">上方弹出</wired-button>
+        <pc-button @click="autoClose">设置关闭时间</pc-button>
+        <pc-button @click="onClickButton">上方弹出</pc-button>
 
         methods: {
           autoClose() {
@@ -98,7 +98,7 @@ export default {
 .code {
   font-weight: bold;
 }
-.gulu-toast {
+.pencil-toast {
   z-index: 30;
 }
 </style>

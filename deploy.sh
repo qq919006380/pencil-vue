@@ -20,4 +20,4 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:qq919006380/wired-vue.git master:gh-pages
+git push -f git@github.com:qq919006380/pencil-vue.git master:gh-pages
