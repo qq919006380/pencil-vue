@@ -53,6 +53,7 @@ export default {
       var triggerWrapper = this.$el.querySelector("#triggerWrapper");
       triggerWrapper.style.width =
         this.$slots.default[1].elm.clientWidth + "px";
+        console.log(this.$slots.default[1].elm)
       triggerWrapper.style.height =
         this.$slots.default[1].elm.clientHeight + "px";
     });
@@ -188,8 +189,6 @@ export default {
         top,
         left
       } = triggerWrapper.getBoundingClientRect();
-      console.log(triggerWrapper)
-      console.log(triggerWrapper.getBoundingClientRect())
       const { height: height2 } = contentWrapper.getBoundingClientRect();
       let positions = {
         top: {
@@ -211,7 +210,6 @@ export default {
       };
       contentWrapper.style.left = positions[this.position].left + "px";
       contentWrapper.style.top = positions[this.position].top + "px";
-      console.log("left：" + positions[this.position].left + "px");
     },
     onClickDocument(e) {
       if (

@@ -20,9 +20,9 @@ export default {
       checked1: true,
       checked2: true,
       content: `
-    <pc-checkbox id="cbox">Checkbox label-1</pc-checkbox>
-    <pc-checkbox id="cbox" checked>Checkbox label-2</pc-checkbox>
-    <pc-checkbox id="cbox" disabled>Checkbox label-3</pc-checkbox>
+    <pc-checkbox  id="cbox">Checkbox label-1</pc-checkbox>
+    <pc-checkbox  id="cbox" checked>Checkbox label-2</pc-checkbox>
+    <pc-checkbox  id="cbox" disabled>Checkbox label-3</pc-checkbox>
     `
         .replace(/\t+| +/g, "")
         .trim()

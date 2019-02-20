@@ -10,7 +10,6 @@ import Popover from "./popover";
 import Toast from "./toast";
 import Test from "./test";
 import plugin from "./plugin";
-import { SSL_OP_NO_SSLv3 } from "constants";
 Vue.use(plugin);
 
 Vue.component("pc-button", Button);
@@ -30,6 +29,9 @@ new Vue({
       data: "默认值",
       checkbox: "1"
     };
+  },
+  mounted(){
+    console.log(plugin)
   },
   methods: {
     on() {
