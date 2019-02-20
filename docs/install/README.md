@@ -11,7 +11,7 @@ import Vue from 'vue'
 new Vue({
   el: '#app',
   components: {
-    'g-button':Button
+    'pc-button':Button
   }
 })
 ```
