@@ -104,7 +104,7 @@ export default {
   opacity: 0;
 }
 
-:host(:focus) path {
+:host(:focus) >>> path {
   stroke-width: 1.5;
 }
 
