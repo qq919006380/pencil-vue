@@ -1,6 +1,6 @@
 {
   "name": "pencil-vue",
-  "version": "0.0.7",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/index.js",
   "dependencies": {
@@ -24,6 +24,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx parcel index.html",
     "build": "npx parcel build index.js --no-cache --no-minify",
+    "publish":"npm publish",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "deploy:build": "bash deploy.sh"

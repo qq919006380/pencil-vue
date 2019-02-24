@@ -6,7 +6,7 @@
 ## 快速上手
 ```
 import Vue from 'vue'
-import {button} from 'pencil-vue'
+import {Button} from 'pencil-vue'
 import 'pencil-vue/dist/index.css'
 
 new Vue({
@@ -21,9 +21,8 @@ new Vue({
 注意：以下例子以局部组件的方式引入同样有效。
 ```
 import Vue from 'vue'
-import {Button, Card, Checkbox, Input, Popover, Toast} from 'pencil-vue'
+import {Button, Card, Checkbox, Input, Popover, Toast, Plugin} from 'pencil-vue'
 import 'pencil-vue/dist/index.css'
-import plugin from "pencil-vue/src/plugin";
 Vue.use(Plugin)
 Vue.component("pc-button", Button);
 Vue.component("pc-card", Card);

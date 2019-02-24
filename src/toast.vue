@@ -16,6 +16,9 @@
 
 <script>
 import { wired } from "./wired-lib.js";
+// import Vue from "vue";
+// import Plugin from './plugin.js';
+// Vue.use(Plugin)
 
 export default {
   name: "pencil-toast",
