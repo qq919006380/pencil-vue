@@ -49,14 +49,16 @@ export default {
   },
   mounted() {
     this.addPopoverListeners();
-    this.$nextTick(function() {
-      var triggerWrapper = this.$el.querySelector("#triggerWrapper");
-      triggerWrapper.style.width =
-        this.$slots.default[1].elm.clientWidth + "px";
-        console.log(this.$slots.default[1].elm)
-      triggerWrapper.style.height =
-        this.$slots.default[1].elm.clientHeight + "px";
-    });
+  },
+  created() {
+    // this.$nextTick(function() {
+    //   var triggerWrapper = this.$el.querySelector("#triggerWrapper");
+    //   triggerWrapper.style.width =
+    //     this.$slots.default[1].elm.clientWidth + "px" || 0;
+    //   console.log(this.$slots.default[1].elm);
+    //   triggerWrapper.style.height =
+    //     this.$slots.default[1].elm.clientHeight + "px" || 0;
+    // });
   },
   beforeDestroy() {
     this.putBackContent();
@@ -354,7 +356,7 @@ $border-radius: 4px;
 <style scoped >
 .host {
   display: block;
-  position: absolute;
+  /* position: absolute; */
   outline: none;
   z-index: 1002;
   -moz-user-select: none;
