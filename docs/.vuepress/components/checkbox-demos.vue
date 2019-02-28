@@ -2,9 +2,10 @@
   <div>
     <h3>使用方法</h3>
     <h4>预览</h4>
-    <pc-checkbox id="cbox">Checkbox label-1</pc-checkbox>
-    <pc-checkbox id="cbox" checked>Checkbox label-2</pc-checkbox>
-    <pc-checkbox id="cbox" disabled>Checkbox label-3</pc-checkbox>
+    <pc-checkbox>Checkbox label-1</pc-checkbox><br>
+    <pc-checkbox checked>Checkbox label-2</pc-checkbox><br>
+    <pc-checkbox disabled>Checkbox label-3</pc-checkbox><br>
+    <pc-checkbox style="color:red">Checkbox label-4</pc-checkbox><br>
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
   </div>
@@ -17,12 +18,11 @@ export default {
   },
   data() {
     return {
-      checked1: true,
-      checked2: true,
       content: `
-    <pc-checkbox  id="cbox">Checkbox label-1</pc-checkbox>
-    <pc-checkbox  id="cbox" checked>Checkbox label-2</pc-checkbox>
-    <pc-checkbox  id="cbox" disabled>Checkbox label-3</pc-checkbox>
+    <pc-checkbox>Checkbox label-1</pc-checkbox>
+    <pc-checkbox checked>Checkbox label-2</pc-checkbox>
+    <pc-checkbox disabled>Checkbox label-3</pc-checkbox>
+    <pc-checkbox style="color:red">Checkbox label-4</pc-checkbox>
     `
         .replace(/\t+| +/g, "")
         .trim()

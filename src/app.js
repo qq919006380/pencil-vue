@@ -9,6 +9,13 @@ import Item from "./item";
 import Popover from "./popover";
 import Toast from "./toast";
 import Test from "./test";
+
+import Tabs from './tabs';
+import TabsBody from './tabs-body';
+import TabsHead from './tabs-head';
+import TabsItem from './tabs-item';
+import TabsPane from './tabs-pane';
+
 import plugin from "./plugin";
 Vue.use(plugin);
 
@@ -22,12 +29,19 @@ Vue.component("pc-popover", Popover);
 Vue.component("pc-toast", Toast);
 Vue.component("test", Test);
 
+Vue.component("g-tabs",Tabs)
+Vue.component("g-tabs-body",TabsBody)
+Vue.component("g-tabs-head",TabsHead)
+Vue.component("g-tabs-item",TabsItem)
+Vue.component("g-tabs-pane",TabsPane)
+
 new Vue({
   el: "#app",
   data() {
     return {
       data: "默认值",
-      checkbox: "1"
+      checkbox: "1",
+      selected: '1'
     };
   },
   mounted(){

@@ -73,6 +73,7 @@
       </pc-card>
       <hr />
       <pc-checkbox id="cbox">多选框</pc-checkbox>
+      <pc-checkbox style="color:red" id="cbox">多选框</pc-checkbox>
       <pc-checkbox id="cbox" disabled>多选框</pc-checkbox>
       <pc-checkbox id="cbox" checked>多选框:{{ checkbox }}</pc-checkbox>
       <hr />
@@ -111,6 +112,17 @@
       <button @click="on3">居中</button>
       <button @click="on4">不关闭</button>
       <button @click="on5">关闭按钮</button>
+      <hr>
+      <g-tabs :selected="selected">
+        <g-tabs-head>
+          <g-tabs-item name="1">1</g-tabs-item>
+          <g-tabs-item name="2">2</g-tabs-item>
+        </g-tabs-head>
+        <g-tabs-body>
+          <g-tabs-pane name="1">content 1</g-tabs-pane>
+          <g-tabs-pane name="2">content 2</g-tabs-pane>
+        </g-tabs-body>
+      </g-tabs>
     </div>
     <script src="./src/app.js"></script>
   </body>

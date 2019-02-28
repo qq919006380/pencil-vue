@@ -1,7 +1,9 @@
 # Hello World
 
 ## 安装
-> **npm install pencil-vue**
+```
+npm install pencil-vue
+```
 
 ## 快速上手
 ```

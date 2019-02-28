@@ -1,6 +1,6 @@
 <template>
   <div id="container" class="host" :class="disabled?'disabled':''">
-    <div id="container" @click="_toggleCheck">
+    <div  @click="_toggleCheck">
       <div id="checkPanel" class="inline">
         <svg id="svg" width="0" height="0"></svg>
       </div>

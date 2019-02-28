@@ -2,8 +2,8 @@
   <div>
     <h3>使用方法</h3>
     <h4>预览</h4>
-    <pc-button>默认按钮</pc-button>
-    <pc-button elevation="3">elevation</pc-button>
+    <pc-button>默认按钮</pc-button>&nbsp;
+    <pc-button elevation="3">elevation</pc-button>&nbsp;&nbsp;
     <pc-button disabled>disabled</pc-button>
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
