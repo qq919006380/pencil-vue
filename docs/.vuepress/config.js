@@ -2,7 +2,11 @@ module.exports = {
     base: '/pencil-vue/', 
     title: 'pencil-vue',
     description: '一个简单的UI框架',
+    head: [
+      ['link', { rel: 'icon', href: '/logo.jpg' }]
+    ],
     themeConfig: {
+      logo: '/logo.jpg',
       repo: 'qq919006380/pencil-vue', // 添加 github 链接
       nav: [
         {text: '主页', link: '/'},
