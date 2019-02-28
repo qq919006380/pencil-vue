@@ -22,6 +22,7 @@ module.exports = {
             ['/components/input','input'],
             ['/components/card','card'],
             ['/components/checkbox','checkbox'],
+            ['/components/tabs','tabs'],
             ['/components/popover','popover'],
             ['/components/toast','toast'],
           ]
