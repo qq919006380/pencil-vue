@@ -2,13 +2,13 @@
 
 # Hello World
 ```
-import {Button} from 'gulu'
+import {Button} from 'pencil-vue'
 import Vue from 'vue'
 
 new Vue({
   el: '#app',
   components: {
-    'g-button':Button
+    'pc-button':Button
   }
 })
 ```
