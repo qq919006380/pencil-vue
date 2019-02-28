@@ -113,9 +113,9 @@ export default {
 .line svg {
   display: block;
 }
-.line svg >>> .bar {
-  /* stroke: var(--wired-slider-bar-color, rgb(0, 0, 0)); */
-}
+/* .line svg >>> .bar {
+  stroke: var(--wired-slider-bar-color, rgb(0, 0, 0));
+} */
 .line svg >>> path {
   stroke-width: 0.7;
   fill: transparent;
