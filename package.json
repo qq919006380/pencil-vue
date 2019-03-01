@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "dependencies": {
+    "highlight.js": "^9.15.6",
     "plugin": "^0.3.3",
     "test": "^0.6.0",
     "vue": "^2.5.21",

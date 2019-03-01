@@ -7,12 +7,21 @@
     <pc-checkbox disabled>Checkbox label-3</pc-checkbox><br>
     <pc-checkbox style="color:red">Checkbox label-4</pc-checkbox><br>
     <h4>代码</h4>
-    <pre><code>{{content}}</code></pre>
+    <pre><code class="html">{{content}}</code></pre>
   </div>
 </template>
 <script>
 import Checkbox from "../../../src/checkbox";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
+hljs.highlightCode = function() {
+  let blocks = document.querySelectorAll("pre code");
+  [].forEach.call(blocks, hljs.highlightBlock);
+};
 export default {
+  mounted() {
+    hljs.highlightCode();
+  },
   components: {
     "pc-checkbox": Checkbox
   },

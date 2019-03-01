@@ -17,7 +17,7 @@
       </pc-tabs-body>
     </pc-tabs>
     <h4>代码</h4>
-    <pre><code>{{content}}</code></pre>
+    <pre><code class="html">{{content}}</code></pre>
   </div>
 </template>
 
@@ -27,7 +27,16 @@ import TabsBody from "../../../src/tabs-body";
 import TabsHead from "../../../src/tabs-head";
 import TabsItem from "../../../src/tabs-item";
 import TabsPane from "../../../src/tabs-pane";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
+hljs.highlightCode = function() {
+  let blocks = document.querySelectorAll("pre code");
+  [].forEach.call(blocks, hljs.highlightBlock);
+};
 export default {
+  mounted() {
+    hljs.highlightCode();
+  },
   components: {
     "pc-tabs": Tabs,
     "pc-tabs-body": TabsBody,

@@ -7,20 +7,29 @@
     <pc-input placeholder="Enter name"></pc-input>
     <pc-input placeholder="Disabled" disabled></pc-input>
     <h4>代码</h4>
-    <pre><code>{{content}}</code></pre>
+    <pre><code class="html">{{content}}</code></pre>
     
     <hr>
     <h4>双向绑定</h4>
     <pc-input v-model="value"></pc-input><span>{{'数据：'+value}}</span>
     <h4>代码</h4>
-    <pre><code>{{content2}}</code></pre>
+    <pre><code class="html">{{content2}}</code></pre>
     
   </div>
 </template>
 
 <script>
 import Input from "../../../src/input";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
+hljs.highlightCode = function() {
+  let blocks = document.querySelectorAll("pre code");
+  [].forEach.call(blocks, hljs.highlightBlock);
+};
 export default {
+  mounted() {
+    hljs.highlightCode();
+  },
   components: {
     "pc-input": Input
   },
