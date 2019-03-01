@@ -2,31 +2,31 @@
 
 ## 安装
 
-```
+```bash
 npm install pencil-vue
 ```
 
 ## 快速上手
 
-```
-import Vue from 'vue'
-import {Button} from 'pencil-vue'
-import 'pencil-vue/dist/index.css'
+```javascript
+import Vue from "vue";
+import { Button } from "pencil-vue";
+import "pencil-vue/dist/index.css";
 
 new Vue({
-  el: '#app',
+  el: "#app",
   components: {
-    'pc-button':Button
+    "pc-button": Button
   }
-})
+});
 ```
 
 ## 完整组件列表和引入方式
 
 注意：以下例子以局部组件的方式引入同样有效。
 
-```
-import Vue from 'vue'
+```javascript
+import Vue from "vue";
 import {
   Button,
   Card,
@@ -39,9 +39,10 @@ import {
   TabsHead,
   TabsItem,
   TabsPane,
-  Plugin} from 'pencil-vue'
-import 'pencil-vue/dist/index.css'
-Vue.use(Plugin)
+  Plugin
+} from "pencil-vue";
+import "pencil-vue/dist/index.css";
+Vue.use(Plugin);
 Vue.component("pc-button", Button);
 Vue.component("pc-card", Card);
 Vue.component("pc-checkbox", Checkbox);
