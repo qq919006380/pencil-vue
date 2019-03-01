@@ -48,4 +48,9 @@ Vue.component("pc-checkbox", Checkbox);
 Vue.component("pc-input", Input);
 Vue.component("pc-popover", Popover);
 Vue.component("pc-toast", Toast);
+Vue.component("pc-tabs", Tabs);
+Vue.component("pc-tabs-body", TabsBody);
+Vue.component("pc-tabs-head", TabsHead);
+Vue.component("pc-tabs-item", TabsItem);
+Vue.component("pc-tabs-pane", TabsPane);
 ```

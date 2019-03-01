@@ -19,13 +19,13 @@ export default {
   data() {
     return {
       content: `
-    <pc-checkbox>Checkbox label-1</pc-checkbox>
-    <pc-checkbox checked>Checkbox label-2</pc-checkbox>
-    <pc-checkbox disabled>Checkbox label-3</pc-checkbox>
-    <pc-checkbox style="color:red">Checkbox label-4</pc-checkbox>
+        <pc-checkbox>Checkbox label-1</pc-checkbox>
+        <pc-checkbox checked>Checkbox label-2</pc-checkbox>
+        <pc-checkbox disabled>Checkbox label-3</pc-checkbox>
+        <pc-checkbox style="color:red">Checkbox label-4</pc-checkbox>
     `
-        .replace(/\t+| +/g, "")
-        .trim()
+        .replace(/^ {8}/gm, "")
+        .trim(),
     };
   }
 };
