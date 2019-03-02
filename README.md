@@ -9,7 +9,7 @@
 
 ### 安装
 
-`npm i pencil-vue`
+`npm i pencil-vue -S`
 
 ### 使用
 
