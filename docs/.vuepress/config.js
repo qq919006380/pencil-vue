@@ -1,7 +1,7 @@
 module.exports = {
     base: '/pencil-vue/', 
     title: 'pencil-vue',
-    description: '一个简单的UI框架',
+    description: '一个手绘风格的UI框架',
     head: [
       ['link', { rel: 'icon', href: '/logo.jpg' }]
     ],
@@ -14,6 +14,7 @@ module.exports = {
       sidebar: [
         {
           title: '入门',
+          collapsable: false,
           children: [
             ['/install/','Hello World'],
             // ['/get-started/','快速上手'],
