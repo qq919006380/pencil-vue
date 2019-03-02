@@ -27,7 +27,7 @@ export default {
     "pc-button": Button
   },
   mounted() {
-    console.log(this.$page.frontmatter);
+    // console.log(this.$page.frontmatter);
   },
   data() {
     return {
@@ -68,16 +68,10 @@ export default {
 .card {
   text-align: left;
   display: inline-block;
-  /* width: calc(29% -1px); */
   padding: 13px;
   margin: 30px;
   color: #4e6e8e;
   line-height: 1.7px
 }
-.c1 {
-  /* background: rgb(230, 254, 243); */
-}
-.c2 {
-  /* background: rgb(230, 254, 243); */
-}
+
 </style>

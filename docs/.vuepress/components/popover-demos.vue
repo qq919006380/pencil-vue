@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .Preview {
   padding: 20px;
 }
