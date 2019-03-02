@@ -9,7 +9,7 @@
 <script>
 import { wired } from "./wired-lib.js";
 export default {
-  name: "pencil-line",
+  name: "pc-line",
   props: {
     elevation: { type: [Number, String], default: 5 },
     color: { type:String, default: 'rgb(0, 0, 0)' }
@@ -44,7 +44,6 @@ export default {
       this._clearNode(svg);
       const s = this.$el.getBoundingClientRect();
       const elev = Math.min(Math.max(1, this.elevation), 5);
-      console.log(elev);
       const w = s.width + (elev - 1) * 2;
       const h = s.height + (elev - 1) * 2;
       svg.setAttribute("width", w);
@@ -62,9 +61,7 @@ export default {
       }
 
       this._bar.classList.add("bar");
-
       this._bar.style.stroke=this.color
-      console.log(this._bar)
       this._knobGroup = wired._svgNode("g");
       svg.appendChild(this._knobGroup);
       this._knob = wired.ellipse(

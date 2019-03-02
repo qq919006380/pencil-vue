@@ -29,11 +29,11 @@ Vue.component("pc-popover", Popover);
 Vue.component("pc-toast", Toast);
 Vue.component("test", Test);
 
-Vue.component("g-tabs",Tabs)
-Vue.component("g-tabs-body",TabsBody)
-Vue.component("g-tabs-head",TabsHead)
-Vue.component("g-tabs-item",TabsItem)
-Vue.component("g-tabs-pane",TabsPane)
+Vue.component("pc-tabs",Tabs)
+Vue.component("pc-tabs-body",TabsBody)
+Vue.component("pc-tabs-head",TabsHead)
+Vue.component("pc-tabs-item",TabsItem)
+Vue.component("pc-tabs-pane",TabsPane)
 
 new Vue({
   el: "#app",
@@ -43,9 +43,6 @@ new Vue({
       checkbox: "1",
       selected: '1'
     };
-  },
-  mounted(){
-    console.log(plugin)
   },
   methods: {
     on() {

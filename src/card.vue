@@ -12,7 +12,7 @@
 <script>
 import { wired } from "./wired-lib.js";
 export default {
-  name: "pencil-card",
+  name: "pc-card",
   props: {
     elevation: {
       type: String,
@@ -31,7 +31,6 @@ export default {
     }
 
     if (this.resizeHandler) {
-        console.log('removeEventListener')
       window.removeEventListener("resize", this.resizeHandler);
       delete this.resizeHandler;
     }

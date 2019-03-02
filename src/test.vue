@@ -25,7 +25,6 @@ export default {
     _layout() {
       const svg = this.$el.querySelector("#svg");
       const host = this.$el;
-      console.log(host);
       var s = host.getBoundingClientRect();
       var w = s.width;
       var h = s.height;

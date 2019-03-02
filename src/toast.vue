@@ -21,7 +21,7 @@ import { wired } from "./wired-lib.js";
 // Vue.use(Plugin)
 
 export default {
-  name: "pencil-toast",
+  name: "pc-toast",
   props: {
     elevation: {
       type: String,
@@ -225,11 +225,11 @@ $toast-bg: rgba(250, 250, 250, 0.75);
 }
 </style>
 <style scoped>
-.host {
-  /* display: inline-block;
+/* .host {
+  display: inline-block;
   position: relative;
-  padding: 5px; */
-}
+  padding: 5px;
+} */
 
 .host.pending {
   opacity: 0;

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'pencil-tabs-body',
+    name: 'pc-tabs-body',
     inject: ['eventBus'],
     created(){
     }

@@ -14,7 +14,7 @@
 <script>
 import { wired } from "./wired-lib.js";
 export default {
-  name: "pencil-checkbox",
+  name: "pc-checkbox",
   props: {
     disabled: {
       type: Boolean,

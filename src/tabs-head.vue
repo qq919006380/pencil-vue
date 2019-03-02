@@ -20,7 +20,7 @@
 import { wired } from "./wired-lib.js";
 import Line from "./line";
 export default {
-  name: "pencil-tabs-head",
+  name: "pc-tabs-head",
   inject: ["eventBus"],
   data() {
     return {

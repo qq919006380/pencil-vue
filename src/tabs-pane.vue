@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'pencil-tabs-pane',
+  name: 'pc-tabs-pane',
     inject: ['eventBus'],
     data () {
       return {
