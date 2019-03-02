@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     autoClose() {
-      this.$toast('3秒后关闭', { autoClose: 3 });
+      this.$toast("3秒后关闭", { autoClose: 3 });
     },
     onClickButton() {
       this.$toast("点击弹出提示", {
@@ -107,6 +107,9 @@ export default {
 .code {
   font-weight: bold;
 }
+</style>
+
+<style>
 .pencil-toast {
   z-index: 30;
 }
