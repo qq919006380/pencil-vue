@@ -56,6 +56,23 @@ export default {
   padding: 10px 50px;
   /* background: rgb(230, 254, 243) */
 }
+
+.card {
+  text-align: left;
+  display: inline-block;
+  padding: 13px;
+  margin: 30px;
+  color: rgba(72,110,142,0.5);
+  line-height: 1.7px;
+}
+.card h2 ,.card p{
+color: #4e6e8e;
+}
+@media (max-width: 970px) {
+  .card {
+    display: block;
+  }
+}
 .footer {
   margin-top: 1rem;
   padding: 2.5rem;
@@ -63,15 +80,4 @@ export default {
   text-align: center;
   color: #4e6e8e;
 }
-
-/* card */
-.card {
-  text-align: left;
-  display: inline-block;
-  padding: 13px;
-  margin: 30px;
-  color: #4e6e8e;
-  line-height: 1.7px
-}
-
 </style>
