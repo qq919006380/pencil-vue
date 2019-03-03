@@ -102,8 +102,9 @@ export default {
 .Preview {
   padding: 20px;
 }
-.code {
+code {
   font-weight: bold;
+  overflow: unset;
 }
 
 /* card */
