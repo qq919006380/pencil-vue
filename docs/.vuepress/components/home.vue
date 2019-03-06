@@ -56,17 +56,21 @@ export default {
   padding: 10px 50px;
   /* background: rgb(230, 254, 243) */
 }
+.btn:hover {
+  background: #f2f2f2;
+}
 
 .card {
   text-align: left;
   display: inline-block;
   padding: 13px;
   margin: 30px;
-  color: rgba(72,110,142,0.5);
+  color: rgba(72, 110, 142, 0.5);
   line-height: 1.7px;
 }
-.card h2 ,.card p{
-color: #4e6e8e;
+.card h2,
+.card p {
+  color: #4e6e8e;
 }
 @media (max-width: 970px) {
   .card {
