@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /logo.jpg
+heroImage: /logo.png
 # actionText: 起步 →
 # actionLink: /install/
 # features:
