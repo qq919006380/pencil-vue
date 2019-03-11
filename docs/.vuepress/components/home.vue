@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <pc-button elevation="4" class="btn" @click="go">起步 →</pc-button>
+    <pc-button elevation="4" class="btn" @click="go">快速上手 →</pc-button>
     <hr>
     <pc-card class="card c1">
       <h2>简明优先</h2>
@@ -53,11 +53,13 @@ export default {
 .btn {
   display: inline-block;
   margin: 25px 0;
-  padding: 10px 50px;
-  /* background: rgb(230, 254, 243) */
+  padding: 10px 35px;
+  font-weight: bold;
+  color: #4e6e8e;
+  background:#f2ffff
 }
 .btn:hover {
-  background: #f2f2f2;
+  background: #f2ffff;
 }
 
 .card {
