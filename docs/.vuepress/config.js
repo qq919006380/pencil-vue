@@ -1,5 +1,5 @@
 module.exports = {
-    base: '/pencil-vue/', 
+    // base: '/pencil-vue/', 
     title: 'pencil-vue',
     description: '一个手绘风格的UI框架',
     head: [
