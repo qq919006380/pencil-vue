@@ -88,7 +88,7 @@ export default {
           enableHtml: true
         });
       } else {
-        this.$toast("<strong style='color:#41bc58;'>登录成功</strong>", {
+        this.$toast(`<strong style='color:#41bc58;'>登录成功，你好 ${this.user} !</strong>`, {
           position: "top",
           enableHtml: true
         });
