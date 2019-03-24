@@ -30,10 +30,46 @@ export default {
     r() {
       const host = this.$el;
       const svg = this.$el.querySelector("#svg");
+      this._clearNode(svg);
       const s = host.getBoundingClientRect();
+      const elev = Math.min(Math.max(1, this.elevation), 5);
+      const w = s.width + (elev - 1) * 2;
+      const h = s.height + (elev - 1) * 2;
+       svg.setAttribute("width", w);
+      svg.setAttribute("height", h);
       const rc = rough.svg(svg);
-      let node = rc.rectangle(0, 0, s.width, s.height, { fill: "rgba(13,28,219,0.5)" });
+      let node = rc.rectangle(0, 0, s.width, s.height);
       svg.appendChild(node);
+      for (var i = 1; i < elev; i++) {
+        wired.line(
+          svg,
+          i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          s.height + i * 2
+        ).style.opacity = (75 - i * 10) / 100;
+        wired.line(
+          svg,
+          s.width + i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          i * 2
+        ).style.opacity = (75 - i * 10) / 100;
+        wired.line(
+          svg,
+          i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          s.height + i * 2
+        ).style.opacity = (75 - i * 10) / 100;
+        wired.line(
+          svg,
+          s.width + i * 2,
+          s.height + i * 2,
+          s.width + i * 2,
+          i * 2
+        ).style.opacity = (75 - i * 10) / 100;
+      }
     },
     updated() {
       const svg = this.$el.querySelector("#svg");
@@ -85,7 +121,7 @@ export default {
   display: inline-block;
   font-family: inherit;
   cursor: pointer;
-  padding: 8px 10px;
+  padding: 8px 13px;
   position: relative;
   text-align: center;
   -moz-user-select: none;
@@ -99,7 +135,7 @@ export default {
   outline: none;
 }
 .host:active >>> path {
-  transform: scale(0.97) translate(1.5%, 1.5%);
+  transform: scale(0.96) translate(0.5%, 0.5%);
 }
 .host.disabled {
   opacity: 0.6 !important;
