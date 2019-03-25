@@ -35,10 +35,10 @@ export default {
       config: {
         stroke: "#309286", //边框颜色
         fill: "rgba(197,236,190,0.8)", //填充的颜色
-        fillStyle: "hachure", //填充的样式
-        hachureAngle: 45,
-        hachureGap: 18,
-        fillWeight: 5
+        fillStyle: "zigzag", //填充的样式
+        hachureAngle: 100,//角度
+        hachureGap: 13,//间隔
+        fillWeight: 6
       }
     };
   },
