@@ -30,7 +30,6 @@ Vue.component("pc-toast", Toast);
 Vue.component("pc-toast", Toast);
 Vue.component("test", Test);
 
-
 Vue.component("pc-tabs", Tabs);
 Vue.component("pc-tabs-body", TabsBody);
 Vue.component("pc-tabs-head", TabsHead);
@@ -45,12 +44,12 @@ new Vue({
       checkbox: "1",
       selected: "1",
       config: {
-        stroke: "blue",//边框颜色
-        fill: "blue",//填充内容
-        fillStyle: "hachure",//填充的样式
-        hachureAngle:-45,
-        hachureGap:10,
-        fillWeight :1,
+        stroke: "blue", //边框颜色
+        fill: "blue", //填充内容
+        fillStyle: "hachure", //填充的样式
+        hachureAngle: -45,
+        hachureGap: 10,
+        fillWeight: 1
       }
     };
   },
