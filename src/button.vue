@@ -8,16 +8,43 @@
 </template>
 
 <script>
-import { wired } from "./wired-lib.js";
+import rough from "roughjs/dist/rough.umd";
 export default {
   name: "pc-button",
   props: {
-    elevation: { type: [Number, String], default: 1 },
-    disabled: { type: Boolean, default: false }
+    elevation: { type: [Number, String], default: 0 },
+    disabled: { type: Boolean, default: false },
+    decoration: {
+      type: Object,
+      default() {
+        return {
+          stroke: "",
+          fill: "",
+          fillStyle: ""
+        };
+      },
+      validator: function(value) {
+        // 这个值必须匹配下列字符串中的一个
+        var user_value = []; //用户输入的属性
+        var a = ["stroke", "fill", "fillStyle",'hachureAngle','hachureGap','fillWeight']; //需要验证的属性
+        var result = true; //返回的值
+        for (var x in value) {
+          user_value.push(x);
+        }
+        // 检查属性
+        user_value.forEach(e => {
+          if (a.indexOf(e) === -1) {
+            result = false;
+          }
+        });
+        // 检查属性类型
+        return result;
+      }
+    }
   },
   mounted() {
     this.$el.classList.remove("pending");
-    this.updated();
+    this.r();
   },
   methods: {
     _clearNode(node) {
@@ -25,45 +52,43 @@ export default {
         node.removeChild(node.lastChild);
       }
     },
-    updated() {
+    r() {
+      const host = this.$el;
       const svg = this.$el.querySelector("#svg");
       this._clearNode(svg);
-      const s = this.$el.getBoundingClientRect();
-      const elev = Math.min(Math.max(1, this.elevation), 5);
-      const w = s.width + (elev - 1) * 2;
-      const h = s.height + (elev - 1) * 2;
-      svg.setAttribute("width", w);
-      svg.setAttribute("height", h);
-      wired.rectangle(svg, 0, 0, s.width, s.height);
-      for (var i = 1; i < elev; i++) {
-        wired.line(
-          svg,
-          i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          s.height + i * 2
-        ).style.opacity = (75 - i * 10) / 100;
-        wired.line(
-          svg,
-          s.width + i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          i * 2
-        ).style.opacity = (75 - i * 10) / 100;
-        wired.line(
-          svg,
-          i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          s.height + i * 2
-        ).style.opacity = (75 - i * 10) / 100;
-        wired.line(
-          svg,
-          s.width + i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          i * 2
-        ).style.opacity = (75 - i * 10) / 100;
+      const s = host.getBoundingClientRect();
+      const elev = Math.min(Math.max(0, this.elevation), 5);
+      svg.setAttribute("width", s.width + elev * 2);
+      svg.setAttribute("height", s.height + elev * 2);
+      const rc = rough.svg(svg);
+      let node = rc.rectangle(0.5, 0.5, s.width - 1, s.height - 1, {
+        stroke: this.decoration.stroke,
+        fill: this.decoration.fill,
+        fillStyle: this.decoration.fillStyle,
+        hachureAngle:this.decoration.hachureAngle,
+        hachureGap:this.decoration.hachureGap,
+        fillWeight:this.decoration.fillWeight,
+        bowing: 2
+      });
+      node.style.opacity = 0.8;
+      svg.appendChild(node);
+      // elevation
+      for (var i = 0; i <= elev; i++) {
+        if (elev === 0) return;
+        var elevation = rc.linearPath(
+          [
+            [s.width + i * 2, 0 + i * 2],
+            [s.width + i * 2, s.height + i * 2],
+            [s.width + i * 2, s.height + i * 2],
+            [0 + i * 2, s.height + i * 2]
+          ],
+          {
+            bowing: 2, //弯曲
+            stroke: this.decoration.stroke
+          }
+        );
+        elevation.style.opacity = 1 - i * 0.12;
+        svg.appendChild(elevation);
       }
     }
   }
@@ -75,7 +100,7 @@ export default {
   display: inline-block;
   font-family: inherit;
   cursor: pointer;
-  padding: 8px 10px;
+  padding: 8px 13px;
   position: relative;
   text-align: center;
   -moz-user-select: none;
@@ -89,7 +114,7 @@ export default {
   outline: none;
 }
 .host:active >>> path {
-  transform: scale(0.97) translate(1.5%, 1.5%);
+  transform: scale(0.97) translate(0.5%, 0.5%);
 }
 .host.disabled {
   opacity: 0.6 !important;
@@ -97,6 +122,7 @@ export default {
   cursor: default;
   pointer-events: none;
 }
+
 .host:focus >>> path {
   stroke-width: 1.5;
 }
@@ -109,6 +135,7 @@ export default {
   pointer-events: none;
 }
 svg {
+  /* overflow: visible; */
   display: block;
 }
 svg >>> path {

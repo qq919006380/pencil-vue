@@ -9,7 +9,6 @@ import Item from "./item";
 import Popover from "./popover";
 import Toast from "./toast";
 import Test from "./test";
-import Buttonr from "./button-r";
 
 import Tabs from "./tabs";
 import TabsBody from "./tabs-body";
@@ -30,7 +29,7 @@ Vue.component("pc-popover", Popover);
 Vue.component("pc-toast", Toast);
 Vue.component("pc-toast", Toast);
 Vue.component("test", Test);
-Vue.component("pc-buttonr", Buttonr);
+
 
 Vue.component("pc-tabs", Tabs);
 Vue.component("pc-tabs-body", TabsBody);
@@ -51,7 +50,7 @@ new Vue({
         fillStyle: "hachure",//填充的样式
         hachureAngle:-45,
         hachureGap:10,
-        fillWeight :1
+        fillWeight :1,
       }
     };
   },
