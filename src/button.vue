@@ -127,6 +127,7 @@ export default {
   stroke-width: 1.5;
 }
 .overlay {
+  z-index: -3;
   position: absolute;
   top: 0;
   left: 0;

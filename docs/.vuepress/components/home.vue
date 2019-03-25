@@ -33,8 +33,8 @@ export default {
     return {
       link: "/install/",
       config: {
-        stroke: "#efca8c", //边框颜色
-        fill: "rgba(241,126,126,0.5)", //填充的颜色
+        stroke: "#309286", //边框颜色
+        fill: "rgba(197,236,190,0.8)", //填充的颜色
         fillStyle: "hachure", //填充的样式
         hachureAngle: 45,
         hachureGap: 18,
@@ -67,7 +67,7 @@ export default {
   /* background: #f2ffff; */
 }
 .btn:hover {
-  background: rgba(241,126,126,0.1);
+  background: rgba(197,236,190,0.2);
 }
 
 .card {
