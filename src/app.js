@@ -9,13 +9,13 @@ import Item from "./item";
 import Popover from "./popover";
 import Toast from "./toast";
 import Test from "./test";
-import Buttonr from './button-r';
+import Buttonr from "./button-r";
 
-import Tabs from './tabs';
-import TabsBody from './tabs-body';
-import TabsHead from './tabs-head';
-import TabsItem from './tabs-item';
-import TabsPane from './tabs-pane';
+import Tabs from "./tabs";
+import TabsBody from "./tabs-body";
+import TabsHead from "./tabs-head";
+import TabsItem from "./tabs-item";
+import TabsPane from "./tabs-pane";
 
 import plugin from "./plugin";
 Vue.use(plugin);
@@ -32,12 +32,11 @@ Vue.component("pc-toast", Toast);
 Vue.component("test", Test);
 Vue.component("pc-buttonr", Buttonr);
 
-
-Vue.component("pc-tabs",Tabs)
-Vue.component("pc-tabs-body",TabsBody)
-Vue.component("pc-tabs-head",TabsHead)
-Vue.component("pc-tabs-item",TabsItem)
-Vue.component("pc-tabs-pane",TabsPane)
+Vue.component("pc-tabs", Tabs);
+Vue.component("pc-tabs-body", TabsBody);
+Vue.component("pc-tabs-head", TabsHead);
+Vue.component("pc-tabs-item", TabsItem);
+Vue.component("pc-tabs-pane", TabsPane);
 
 new Vue({
   el: "#app",
@@ -45,7 +44,12 @@ new Vue({
     return {
       data: "默认值",
       checkbox: "1",
-      selected: '1'
+      selected: "1",
+      config: {
+        stroke: "#000",//边框颜色
+        fill: "pink",//填充内容
+        fillStyle: "hachure",//填充的样式
+      }
     };
   },
   methods: {
@@ -61,7 +65,9 @@ new Vue({
     on3() {
       this.$toast("点击弹出提示asdasd", { position: "middle" });
     },
-    on4() {this.$toast("点击弹出提示asdasd", { autoClose: false });},
+    on4() {
+      this.$toast("点击弹出提示asdasd", { autoClose: false });
+    },
     on5() {
       this.$toast("你知道我在等你吗？", {
         closeButton: {

@@ -13,13 +13,43 @@ import { wired } from "./wired-lib.js";
 export default {
   name: "pc-button",
   props: {
-    elevation: { type: [Number, String], default: 1 },
+    elevation: { type: [Number, String], default: 0 },
     disabled: { type: Boolean, default: false },
-    stroke: { type: String, default: "#000" }
+    decoration: {
+      type: Object,
+      default() {
+        return {
+          stroke: "",
+          fill: "",
+          fillStyle: ""
+        };
+      },
+      validator: function(value) {
+        // 这个值必须匹配下列字符串中的一个
+        var v = []; //用户输入的属性
+        var a = ["stroke", "fill", "fillStyle"]; //需要验证的属性
+        var t = true; //返回的值
+        for (var x in value) {
+          v.push(x);
+        }
+        // 检查属性
+        v.forEach(e => {
+          console.log(a.indexOf(e) !== -1);
+          if (a.indexOf(e) === -1) {
+            t = false;
+          }
+        });
+        // 检查属性类型
+
+        return t;
+      }
+    }
+  },
+  created() {
+    console.log(this.decoration.stroke);
   },
   mounted() {
     this.$el.classList.remove("pending");
-    // this.updated();
     this.r();
   },
   methods: {
@@ -33,18 +63,22 @@ export default {
       const svg = this.$el.querySelector("#svg");
       this._clearNode(svg);
       const s = host.getBoundingClientRect();
-      const elev = Math.min(Math.max(1, this.elevation), 5);
+      const elev = Math.min(Math.max(0, this.elevation), 5);
       svg.setAttribute("width", s.width + elev * 2);
       svg.setAttribute("height", s.height + elev * 2);
       const rc = rough.svg(svg);
-      let node = rc.rectangle(1, 1, s.width, s.height, {
-        stroke: this.stroke,
-        bowing: 2 //曲线
-        // roughness:2
+      let node = rc.rectangle(0, 0, s.width - 1, s.height - 1, {
+        stroke: this.decoration.stroke,
+        fill: this.decoration.fill,
+        fillStyle: this.decoration.fillStyle,
+        // fillWeight :2,
+        bowing: 2
       });
+      node.style.opacity = 0.8;
       svg.appendChild(node);
       // elevation
-      for (var i = 0; i < elev; i++) {
+      for (var i = 0; i <= elev; i++) {
+        if (elev === 0) return;
         var elevation = rc.linearPath(
           [
             [s.width + i * 2, 0 + i * 2],
@@ -54,7 +88,7 @@ export default {
           ],
           {
             bowing: 2, //弯曲
-            stroke: this.stroke
+            stroke: this.decoration.stroke
           }
         );
         elevation.style.opacity = 1 - i * 0.12;
