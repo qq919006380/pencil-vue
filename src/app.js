@@ -46,9 +46,12 @@ new Vue({
       checkbox: "1",
       selected: "1",
       config: {
-        stroke: "#000",//边框颜色
-        fill: "pink",//填充内容
+        stroke: "blue",//边框颜色
+        fill: "blue",//填充内容
         fillStyle: "hachure",//填充的样式
+        hachureAngle:-45,
+        hachureGap:10,
+        fillWeight :1
       }
     };
   },

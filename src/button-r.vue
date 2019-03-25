@@ -26,22 +26,20 @@ export default {
       },
       validator: function(value) {
         // 这个值必须匹配下列字符串中的一个
-        var v = []; //用户输入的属性
-        var a = ["stroke", "fill", "fillStyle"]; //需要验证的属性
-        var t = true; //返回的值
+        var user_value = []; //用户输入的属性
+        var a = ["stroke", "fill", "fillStyle",'hachureAngle','hachureGap','fillWeight']; //需要验证的属性
+        var result = true; //返回的值
         for (var x in value) {
-          v.push(x);
+          user_value.push(x);
         }
         // 检查属性
-        v.forEach(e => {
-          console.log(a.indexOf(e) !== -1);
+        user_value.forEach(e => {
           if (a.indexOf(e) === -1) {
-            t = false;
+            result = false;
           }
         });
         // 检查属性类型
-
-        return t;
+        return result;
       }
     }
   },
@@ -67,11 +65,13 @@ export default {
       svg.setAttribute("width", s.width + elev * 2);
       svg.setAttribute("height", s.height + elev * 2);
       const rc = rough.svg(svg);
-      let node = rc.rectangle(0, 0, s.width - 1, s.height - 1, {
+      let node = rc.rectangle(0.5, 0.5, s.width - 1, s.height - 1, {
         stroke: this.decoration.stroke,
         fill: this.decoration.fill,
         fillStyle: this.decoration.fillStyle,
-        // fillWeight :2,
+        hachureAngle:this.decoration.hachureAngle,
+        hachureGap:this.decoration.hachureGap,
+        fillWeight:this.decoration.fillWeight,
         bowing: 2
       });
       node.style.opacity = 0.8;
