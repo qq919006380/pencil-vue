@@ -44,13 +44,62 @@ new Vue({
       checkbox: "1",
       selected: "1",
       config: {
-        stroke: "blue", //边框颜色
-        fill: "blue", //填充内容
+        stroke: "#d8cbbb", //边框颜色
+        fill: "#621295", //填充的颜色
         fillStyle: "hachure", //填充的样式
         hachureAngle: -45,
         hachureGap: 10,
         fillWeight: 1
-      }
+      },
+      config1: {
+        stroke: "#560764", //边框颜色
+        fill: "#ffaaaa", //填充的颜色
+        fillStyle: "solid", //填充的样式
+        hachureAngle: 45,
+        hachureGap: 5,
+        fillWeight: 2
+      },
+      config2: {
+        stroke: "#fcd307", //边框颜色
+        fill: "#1c1259", //填充的颜色
+        fillStyle: "zigzag", //填充的样式
+        hachureAngle: -45,
+        hachureGap: 5,
+        fillWeight: 2
+      },
+      config3: {
+        stroke: "#b7fbff", //边框颜色
+        fill: "#fff6be", //填充的颜色
+        fillStyle: "cross-hatch", //填充的样式
+        hachureAngle: -45,
+        hachureGap: 5,
+        fillWeight: 2
+      },
+      config4: {
+        stroke: "#b7fbff", //边框颜色
+        fill: "#c6cbef", //填充的颜色
+        fillStyle: "dots", //填充的样式
+        hachureAngle: -45,
+        hachureGap: 5,
+        fillWeight: 2
+      },
+      config5: {
+        stroke: "#fdffdc", //边框颜色
+        fill: "#b4e9e2", //填充的颜色
+        fillStyle: "sunburst", //填充的样式
+        hachureAngle: -45,
+        hachureGap: 10,
+        fillWeight: 1
+      },
+      config6: {
+        stroke: "#5d3a3a", //边框颜色
+        fill: "#a6e3e9", //填充的颜色
+        fillStyle: "dashed", //填充的样式
+        hachureAngle: -45,
+        hachureGap: 10,
+        fillWeight: 2
+      },
+
     };
   },
   methods: {

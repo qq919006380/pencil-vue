@@ -10,9 +10,9 @@
 
     <h3>可配置</h3>
     <h4>预览</h4>
-    <pc-button :decoration="config">默认按钮</pc-button>&nbsp;
+    <pc-button :decoration="config">配置的按钮</pc-button>&nbsp;
     <pc-button :decoration="config" elevation="3">elevation</pc-button>&nbsp;&nbsp;
-    <pc-button :decoration="config">disabled</pc-button>
+    <pc-button :decoration="config">配置的按钮</pc-button>
     <h4>代码</h4>
     <pre><code class="html">{{cf_content}}</code></pre>
     <pre><code class="javascript">{{cf_content2}}</code></pre>
@@ -52,9 +52,9 @@ export default {
         .replace(/^ {8}/gm, "")
         .trim(),
       cf_content: `
-        <pc-button :decoration="config">默认按钮</pc-button>;
-        <pc-button :decoration="config" elevation="3">elevation</pc-button>;
-        <pc-button :decoration="config">disabled</pc-button>`
+        <pc-button :decoration="config">配置的按钮</pc-button>
+        <pc-button :decoration="config" elevation="3">elevation</pc-button>
+        <pc-button :decoration="config">配置的按钮</pc-button>`
         .replace(/^ {8}/gm, "")
         .trim(),
       cf_content2: `

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <pc-button elevation="4" class="btn" @click="go">快速上手 →</pc-button>
+    <pc-button elevation="5" class="btn" :decoration="config" @click="go"><h3>快速上手 →</h3></pc-button>
     <hr>
     <pc-card class="card c1">
       <h2>简明优先</h2>
@@ -31,7 +31,15 @@ export default {
   },
   data() {
     return {
-      link: "/install/"
+      link: "/install/",
+      config: {
+        stroke: "#efca8c", //边框颜色
+        fill: "rgba(241,126,126,0.5)", //填充的颜色
+        fillStyle: "hachure", //填充的样式
+        hachureAngle: 45,
+        hachureGap: 18,
+        fillWeight: 5
+      }
     };
   },
   methods: {
@@ -56,10 +64,10 @@ export default {
   padding: 10px 35px;
   font-weight: bold;
   color: #4e6e8e;
-  background:#f2ffff
+  /* background: #f2ffff; */
 }
 .btn:hover {
-  background: #f2ffff;
+  background: rgba(241,126,126,0.1);
 }
 
 .card {
