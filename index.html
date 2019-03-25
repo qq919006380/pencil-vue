@@ -16,9 +16,9 @@
       .c2 {
         background: bisque;
       }
-      .popover{
-          margin: 0 100px
-        }
+      .popover {
+        margin: 0 100px;
+      }
     </style>
   </head>
 
@@ -83,36 +83,48 @@
         <pc-item value="three" text="Number three"></pc-item>
         <pc-item value="three" text="Number three"></pc-item>
       </pc-combo> -->
-      <hr>
+      <hr />
 
-      <pc-popover position='top'  class="popover">
-        <template slot="content">弹</template>
+      <pc-popover position="top" class="popover">
+        <template slot="content"
+          >弹</template
+        >
         <pc-button>长</pc-button>
       </pc-popover>
-      <pc-popover position='bottom'  class="popover">
-        <template slot="content">弹出的内容</template >
+      <pc-popover position="bottom" class="popover">
+        <template slot="content"
+          >弹出的内容</template
+        >
         <pc-button>长</pc-button>
       </pc-popover>
-      <pc-popover position='left'  class="popover">
-        <template slot="content">弹出的内容</template>
-        <pc-button>高高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br>高<br></pc-button>
+      <pc-popover position="left" class="popover">
+        <template slot="content"
+          >弹出的内容</template
+        >
+        <pc-button
+          >高高<br />高<br />高<br />高<br />高<br />高<br />高<br />高<br />高<br />高<br
+        /></pc-button>
       </pc-popover>
-      <pc-popover position='right'  class="popover">
-        <template slot="content">弹出的内容</template>
+      <pc-popover position="right" class="popover">
+        <template slot="content"
+          >弹出的内容</template
+        >
         <pc-button>高</pc-button>
       </pc-popover>
-      <pc-popover position='right' class="popover">
-        <template slot="content">弹出内容asdasdsd</template>
+      <pc-popover position="right" class="popover">
+        <template slot="content"
+          >弹出内容asdasdsd</template
+        >
         <pc-button>btn</pc-button>
       </pc-popover>
-      <hr>
+      <hr />
       <button @click="on">默认</button>
       <button @click="on1">上方</button>
       <button @click="on2">下方</button>
       <button @click="on3">居中</button>
       <button @click="on4">不关闭</button>
       <button @click="on5">关闭按钮</button>
-      <hr>
+      <hr />
       <pc-tabs :selected="selected">
         <pc-tabs-head>
           <pc-tabs-item name="1">1</pc-tabs-item>
@@ -123,8 +135,20 @@
           <pc-tabs-pane name="2">content 2</pc-tabs-pane>
         </pc-tabs-body>
       </pc-tabs>
-      <pc-buttonr elevation=1>默认按钮</pc-buttonr>
-      <pc-buttonr >按钮</pc-buttonr>
+
+      <pc-buttonr style="margin:10px">默认按钮</pc-buttonr>
+      <pc-buttonr style="margin:10px" elevation="2">elevation=2</pc-buttonr>
+      <pc-buttonr style="margin:10px" elevation="3">elevation=3</pc-buttonr>
+      <pc-buttonr style="margin:10px" elevation="4">elevation=4</pc-buttonr>
+      <pc-buttonr style="margin:10px" elevation="5">elevation=5</pc-buttonr>
+
+      <br /><br />
+      <pc-button style="margin:10px">默认按钮</pc-button>
+      <pc-button style="margin:10px" elevation="2">elevation=2</pc-button>
+      <pc-button style="margin:10px" elevation="3">elevation=3</pc-button>
+      <pc-button style="margin:10px" elevation="4">elevation=4</pc-button>
+      <pc-button style="margin:10px" elevation="5">elevation=5</pc-button>
+      <br /><br />
     </div>
     <script src="./src/app.js"></script>
   </body>
