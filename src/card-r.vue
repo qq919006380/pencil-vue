@@ -1,6 +1,8 @@
 <template>
-  <div id="btn" class="host" :class="{disabled:disabled}" @click="$emit('click',$event.target)">
-    <slot></slot>
+  <div class="host">
+    <div>
+      <slot></slot>
+    </div>
     <div class="overlay">
       <svg id="svg"></svg>
     </div>
@@ -11,7 +13,7 @@
 import rough from "roughjs/dist/rough.umd";
 import tool from "./tool.js";
 export default {
-  name: "pc-button",
+  name: "pc-card",
   props: {
     elevation: { type: [Number, String], default: 0 },
     disabled: { type: Boolean, default: false },
@@ -101,36 +103,11 @@ export default {
 <style scoped>
 .host {
   display: inline-block;
-  font-family: inherit;
-  cursor: pointer;
-  padding: 8px 13px;
   position: relative;
-  text-align: center;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  display: inline-flex;
-  outline: none;
-}
-.host:active >>> path {
-  transform: scale(0.97) translate(0.5%, 0.5%);
-}
-.host.disabled {
-  opacity: 0.6 !important;
-  background: rgba(0, 0, 0, 0.07);
-  cursor: default;
-  pointer-events: none;
+  padding: 5px;
 }
 
-.host:focus >>> path {
-  stroke-width: 1.5;
-}
 .overlay {
-  z-index: -3;
   position: absolute;
   top: 0;
   left: 0;
@@ -138,15 +115,13 @@ export default {
   bottom: 0;
   pointer-events: none;
 }
+
 svg {
-  /* overflow: visible; */
   display: block;
 }
 svg >>> path {
   stroke: currentColor;
   stroke-width: 0.7;
   fill: transparent;
-  transition: transform 0.05s ease;
 }
 </style>
-
