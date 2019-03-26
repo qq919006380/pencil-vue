@@ -13,30 +13,7 @@
     </label>
   </div>
 </template>
-<style scoped>
-.pr {
-  position: relative;
-}
-.inline {
-  display: inline-block;
-}
-.checkbox {
-  width: 24px;
-  height: 24px;
-  margin: 0;
-  padding: 0;
-}
-.overlay {
-  width: 24px;
-  height: 24px;
-  margin: 0;
-  padding: 0;
-  background: pink;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-</style>
+
 
 <script>
 import rough from "roughjs/dist/rough.umd";
@@ -127,19 +104,32 @@ export default {
 :host(:focus) >>> path {
   stroke-width: 1.5;
 }
-
+.pr {
+  position: relative;
+}
+.inline {
+  display: inline-block;
+}
 .checkbox {
   outline: none;
   border: none;
-  /* visibility: hidden; */
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
 }
 .overlay {
   display: inline-block;
   vertical-align: middle;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  background: pink;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-
 .inline {
   display: inline-block;
   vertical-align: middle;
@@ -158,3 +148,4 @@ svg >>> path {
   stroke-width: 0.7;
 }
 </style>
+
