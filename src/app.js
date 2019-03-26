@@ -19,8 +19,8 @@ import TabsPane from "./tabs-pane";
 import plugin from "./plugin";
 Vue.use(plugin);
 
-import cardr from "./card-r";
-Vue.component("pc-cardr", cardr);
+// import cardr from "./card-r";
+// Vue.component("pc-cardr", cardr);
 
 Vue.component("pc-button", Button);
 Vue.component("pc-input", Input);

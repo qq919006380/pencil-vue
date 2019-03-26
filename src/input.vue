@@ -17,17 +17,17 @@
       <svg id="svg"></svg>
     </div>
   </div>
-  
 </template>
 
 <script>
-import { wired } from "./wired-lib.js";
+import rough from "roughjs/dist/rough.umd";
+import tool from "./tool.js";
 export default {
   name: "pc-input",
   props: {
     name: {},
     value: {
-      type: String,
+      type: String
     },
     placeholder: {
       type: String,
@@ -51,27 +51,30 @@ export default {
     }
   },
   mounted() {
-    this.$el.classList.add("pending");
-    this.updated();
+    this.r();
   },
   methods: {
-    updated() {
+    r() {
+      const host = this.$el;
       const svg = this.$el.querySelector("#svg");
-      this._clearNode(svg);
-      const s = this.$el.getBoundingClientRect();
-      svg.setAttribute("width", s.width);
-      svg.setAttribute("height", s.height);
-      wired.rectangle(svg, 0, 0, s.width, s.height);
-      this.$el.classList.remove("pending");
-      if (typeof this._value !== "undefined") {
-        this.input.value = this._value;
-        delete this._value;
-      }
-    },
-    _clearNode(node) {
-      while (node.hasChildNodes()) {
-        node.removeChild(node.lastChild);
-      }
+      tool.clearNode(svg);
+      const s = host.getBoundingClientRect();
+      const elev = Math.min(Math.max(0, this.elevation), 5);
+      svg.setAttribute("width", s.width + 2);
+      svg.setAttribute("height", s.height + 2);
+      const rc = rough.svg(svg);
+      let node = rc.rectangle(0.5, 0.5, s.width - 1, s.height - 1, {
+        // stroke: this.decoration.stroke,
+        // fill: this.decoration.fill,
+        // fillStyle: this.decoration.fillStyle,
+        // hachureAngle: this.decoration.hachureAngle,
+        // hachureGap: this.decoration.hachureGap,
+        // fillWeight: this.decoration.fillWeight,
+        bowing: 2,
+        strokeWidth: 1.2
+      });
+      node.style.opacity = 0.8;
+      svg.appendChild(node);
     }
   }
 };
@@ -86,11 +89,6 @@ export default {
   width: 150px;
   outline: none;
 }
-
-.host.pending {
-  opacity: 0;
-}
-
 .host.disabled {
   opacity: 0.6 !important;
   cursor: default;

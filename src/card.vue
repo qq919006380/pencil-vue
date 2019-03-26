@@ -10,98 +10,91 @@
 </template>
 
 <script>
-import { wired } from "./wired-lib.js";
+import rough from "roughjs/dist/rough.umd";
+import tool from "./tool.js";
 export default {
   name: "pc-card",
   props: {
-    elevation: {
-      type: String,
-      default: "1"
+    elevation: { type: [Number, String], default: 0 },
+    disabled: { type: Boolean, default: false },
+    decoration: {
+      type: Object,
+      default() {
+        return {
+          stroke: "",
+          fill: "",
+          fillStyle: ""
+        };
+      },
+      validator: function(value) {
+        var user_value = []; //用户输入的属性
+        var a = [
+          "stroke",
+          "fill",
+          "fillStyle",
+          "hachureAngle",
+          "hachureGap",
+          "fillWeight"
+        ]; //需要验证的属性
+        var result = true; //返回的值
+        for (var x in value) {
+          user_value.push(x);
+        }
+        // 检查属性
+        user_value.forEach(e => {
+          if (a.indexOf(e) === -1) {
+            result = false;
+          }
+        });
+        // 检查属性类型
+        return result;
+      }
     }
   },
   mounted() {
-    if (!this.$el.resizeHandler) {
-      this.$el.resizeHandler = this._debounce(
-        this.updated.bind(this.$el),
-        200,
-        false,
-        this.$el
-      );
-      window.addEventListener("resize", this.$el.resizeHandler);
-    }
-
-    if (this.resizeHandler) {
-      window.removeEventListener("resize", this.resizeHandler);
-      delete this.resizeHandler;
-    }
-    this.$el.classList.remove('pending');
-    this.updated()
+    tool.watchDom(this.$el, () => {
+      this.r();
+    });
   },
   methods: {
-    _clearNode(node) {
-      while (node.hasChildNodes()) {
-        node.removeChild(node.lastChild);
-      }
-    },
-    _debounce(func, wait, immediate, context) {
-      let timeout = 0;
-      return () => {
-        const args = arguments;
-        const later = () => {
-          timeout = 0;
-          if (!immediate) {
-            func.apply(context, args);
-          }
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = window.setTimeout(later, wait);
-        if (callNow) {
-          func.apply(context, args);
-        }
-      };
-    },
-    updated() {
+    r() {
+      const host = this.$el;
       const svg = this.$el.querySelector("#svg");
-      this._clearNode(svg);
-      var s = this.$el.getBoundingClientRect();
-      var elev = Math.min(Math.max(1, this.elevation), 5);
-      var w = s.width + (elev - 1) * 2;
-      var h = s.height + (elev - 1) * 2;
-      svg.setAttribute("width", w);
-      svg.setAttribute("height", h);
-      wired.rectangle(svg, 0, 0, s.width, s.height);
-      for (var i = 1; i < elev; i++) {
-        wired.line(
-          svg,
-          i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          s.height + i * 2
-        ).style.opacity = (85 - i * 10) / 100;
-        wired.line(
-          svg,
-          s.width + i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          i * 2
-        ).style.opacity = (85 - i * 10) / 100;
-        wired.line(
-          svg,
-          i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          s.height + i * 2
-        ).style.opacity = (85 - i * 10) / 100;
-        wired.line(
-          svg,
-          s.width + i * 2,
-          s.height + i * 2,
-          s.width + i * 2,
-          i * 2
-        ).style.opacity = (85 - i * 10) / 100;
+      tool.clearNode(svg)
+      const s = host.getBoundingClientRect();
+      const elev = Math.min(Math.max(0, this.elevation), 5);
+      svg.setAttribute("width", s.width + elev * 2);
+      svg.setAttribute("height", s.height + elev * 2);
+      const rc = rough.svg(svg);
+      let node = rc.rectangle(0.5, 0.5, s.width - 1, s.height - 1, {
+        stroke: this.decoration.stroke,
+        fill: this.decoration.fill,
+        fillStyle: this.decoration.fillStyle,
+        hachureAngle: this.decoration.hachureAngle,
+        hachureGap: this.decoration.hachureGap,
+        fillWeight: this.decoration.fillWeight,
+        bowing: 2
+      });
+      node.style.opacity = 0.8;
+      svg.appendChild(node);
+      // elevation
+      for (var i = 0; i <= elev; i++) {
+        if (elev === 0) return;
+        var elevation = rc.linearPath(
+          [
+            [s.width + i * 2, 0 + i * 2],
+            [s.width + i * 2, s.height + i * 2],
+            [s.width + i * 2, s.height + i * 2],
+            [0 + i * 2, s.height + i * 2]
+          ],
+          {
+            bowing: 2, //弯曲
+            stroke: this.decoration.stroke
+          }
+        );
+        elevation.style.opacity = 1 - i * 0.12;
+        svg.appendChild(elevation);
       }
-      this.$el.classList.remove("pending");
     }
   }
 };
@@ -112,10 +105,6 @@ export default {
   display: inline-block;
   position: relative;
   padding: 5px;
-}
-
-.host.pending {
-  opacity: 0;
 }
 
 .overlay {
