@@ -1,18 +1,46 @@
 <template>
-  <div id="container" class="host" :class="disabled?'disabled':''">
-    <div  @click="_toggleCheck">
-      <div id="checkPanel" class="inline">
-        <svg id="svg" width="0" height="0"></svg>
+  <div class="host" :class="disabled?'disabled':''" @click="_toggleCheck">
+    <label class="inline">
+      <div style="vertical-align:middle;" class="inline pr">
+        <input type="checkbox" class="checkbox">
+        <div class="overlay">
+          <svg id="svg"></svg>
+        </div>
       </div>
-      <div class="inline">
+      <div style="vertical-align:middle;" class="inline sp">
         <slot></slot>
       </div>
-    </div>
+    </label>
   </div>
 </template>
+<style scoped>
+.pr {
+  position: relative;
+}
+.inline {
+  display: inline-block;
+}
+.checkbox {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+}
+.overlay {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  background: pink;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+</style>
 
 <script>
-import { wired } from "./wired-lib.js";
+import rough from "roughjs/dist/rough.umd";
+import tool from "./tool.js";
 export default {
   name: "pc-checkbox",
   props: {
@@ -20,64 +48,58 @@ export default {
       type: Boolean,
       default: false
     },
-    checked:{
+    checked: {
       type: Boolean,
       default: false
     }
   },
-  data(){
-    return{
-      cc:this.checked
-    }
+  data() {
+    return {
+      cc: this.checked,
+      host: undefined
+    };
   },
   mounted() {
-    this.$el.classList.add("pending");
-    this.updated();
+    this.host = this.$el.querySelector(".checkbox");
+    tool.watchDom(this.host, () => {
+      this.r();
+    });
   },
   methods: {
-    updated() {
-      const svg = this.$el.querySelector("#svg");
-      this._clearNode(svg);
-      const s = { width: 24, height: 24 };
-      svg.setAttribute("width", s.width);
-      svg.setAttribute("height", s.height);
-      wired.rectangle(svg, 0, 0, s.width, s.height);
-      const checkpaths = [];
-      checkpaths.push(
-        wired.line(
-          svg,
-          s.width * 0.3,
-          s.height * 0.4,
-          s.width * 0.5,
-          s.height * 0.7
-        )
-      );
-      checkpaths.push(
-        wired.line(svg, s.width * 0.5, s.height * 0.7, s.width + 5, -5)
-      );
-      checkpaths.forEach(d => {
-        d.style.strokeWidth = 2.5;
+    r() {
+      const host = this.host;
+      var svg = this.$el.querySelector("#svg");
+      tool.clearNode(svg);
+      const s = host.getBoundingClientRect();
+      const elev = Math.min(Math.max(0, this.elevation), 5);
+      svg.setAttribute("width", s.width + 2);
+      svg.setAttribute("height", s.height + 2);
+      const rc = rough.svg(svg);
+      let node = rc.rectangle(0.5, 0.5, s.width - 1, s.height - 1, {
+        stroke: this.stroke,
+        bowing: 1.5,
+        roughness: 1.5,
+        strokeWidth: 1.1
       });
-      if (this.cc) {
-        checkpaths.forEach(d => {
-          d.style.display = "";
-        });
-      } else {
-        checkpaths.forEach(d => {
-          d.style.display = "none";
-        });
-      }
-      this.$el.classList.remove("pending");
+      node.style.opacity = 0.8;
+      svg.appendChild(node);
+    },
+    toggleCheck() {
+      var svg = this.$el.querySelector("#svg");
+      const rc = rough.svg(svg);
+      let check = rc.rectangle(0.5, 0.5, 10, 10, {
+        stroke: this.stroke,
+        bowing: 1.5,
+        roughness: 1.5,
+        strokeWidth: 1.1
+      });
+      svg.appendChild(check);
     },
 
     _toggleCheck() {
       this.cc = !(this.cc || false);
-      this.updated();
-    },
-    _clearNode(node) {
-      while (node.hasChildNodes()) {
-        node.removeChild(node.lastChild);
-      }
+      this.toggleCheck();
+      this.r();
     }
   }
 };
@@ -88,6 +110,8 @@ export default {
   display: block;
   font-family: inherit;
   outline: none;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .host.disabled {
@@ -100,17 +124,20 @@ export default {
   background: rgba(0, 0, 0, 0.07);
 }
 
-.host.pending {
-  opacity: 0;
-}
-
 :host(:focus) >>> path {
   stroke-width: 1.5;
 }
 
-#container {
+.checkbox {
+  outline: none;
+  border: none;
+  /* visibility: hidden; */
+}
+.overlay {
   display: inline-block;
-  white-space: nowrap;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
 }
 
 .inline {

@@ -48,10 +48,16 @@ export default {
     readonly: {
       type: Boolean,
       default: false
+    },
+    stroke: {
+      type: String,
+      default: "#000"
     }
   },
   mounted() {
-    this.r();
+    tool.watchDom(this.$el, () => {
+      this.r();
+    });
   },
   methods: {
     r() {
@@ -64,14 +70,9 @@ export default {
       svg.setAttribute("height", s.height + 2);
       const rc = rough.svg(svg);
       let node = rc.rectangle(0.5, 0.5, s.width - 1, s.height - 1, {
-        // stroke: this.decoration.stroke,
-        // fill: this.decoration.fill,
-        // fillStyle: this.decoration.fillStyle,
-        // hachureAngle: this.decoration.hachureAngle,
-        // hachureGap: this.decoration.hachureGap,
-        // fillWeight: this.decoration.fillWeight,
+        stroke: this.stroke,
         bowing: 2,
-        strokeWidth: 1.2
+        strokeWidth: 1.1
       });
       node.style.opacity = 0.8;
       svg.appendChild(node);
