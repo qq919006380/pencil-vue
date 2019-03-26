@@ -82,7 +82,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .host {
   display: block;
   font-family: inherit;
@@ -143,7 +143,7 @@ svg {
   display: block;
 }
 
-svg >>> path {
+svg /deep/ path {
   stroke: var(--wired-checkbox-icon-color, currentColor);
   stroke-width: 0.7;
 }
