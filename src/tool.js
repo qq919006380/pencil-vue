@@ -1,3 +1,4 @@
+import ResizeObserver from 'resize-observer-polyfill';
 export default {
   a(x) {
     console.log(x);

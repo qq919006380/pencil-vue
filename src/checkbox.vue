@@ -125,7 +125,7 @@ export default {
   height: 24px;
   margin: 0;
   padding: 0;
-  background: pink;
+  // background: pink;
   position: absolute;
   top: 0;
   left: 0;
