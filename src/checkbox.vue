@@ -1,5 +1,5 @@
 <template>
-  <div class="host" :class="disabled?'disabled':''" @click="_toggleCheck">
+  <div class="host" :class="disabled?'disabled':''" @change="_toggleCheck">
     <label class="inline">
       <div style="vertical-align:middle;" class="inline pr">
         <input type="checkbox" class="checkbox">
@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+      checked: false,
       cc: this.checked,
       host: undefined
     };
@@ -59,30 +60,39 @@ export default {
         strokeWidth: 1.1
       });
       node.style.opacity = 0.8;
+
+      let check = rc.linearPath([[-3, 10], [10, 20], [34, -4]], {
+        strokeWidth: 3,
+        roughness: 2,
+        bowing: 8,
+        stroke: this.stroke
+      });
+      if (this.checked == true) {
+        svg.appendChild(check);
+      }
+
       svg.appendChild(node);
     },
-    toggleCheck() {
-      var svg = this.$el.querySelector("#svg");
-      const rc = rough.svg(svg);
-      let check = rc.rectangle(0.5, 0.5, 10, 10, {
-        stroke: this.stroke,
-        bowing: 1.5,
-        roughness: 1.5,
-        strokeWidth: 1.1
-      });
-      svg.appendChild(check);
-    },
-
     _toggleCheck() {
       this.cc = !(this.cc || false);
-      this.toggleCheck();
+      this.check = !this.check;
+      console.log(this.check);
       this.r();
+    },
+    on() {
+      console.log(132);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+svg {
+  overflow: visible;
+}
+.checkbox {
+  visibility: hidden;
+}
 .host {
   display: block;
   font-family: inherit;
