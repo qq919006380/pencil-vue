@@ -1,8 +1,17 @@
 <template>
-  <div class="host" :class="disabled?'disabled':''" @change="_toggleCheck">
+  <div class="host" :class="disabled?'disabled':''" >
+    <!-- @change="_toggleCheck" -->
     <label class="inline">
       <div style="vertical-align:middle;" class="inline pr">
-        <input type="checkbox" class="checkbox">
+        <input
+          type="checkbox"
+          class="checkbox"
+          :checked="value"
+          @change="$emit('change',$event.target.checked)"
+          @input="$emit('input',$event.target.checked)"
+          @focus="$emit('focus',$event.target.checked)"
+          @blur="$emit('blur',$event.target.checked)"
+        >
         <div class="overlay">
           <svg id="svg"></svg>
         </div>
@@ -25,14 +34,15 @@ export default {
       type: Boolean,
       default: false
     },
-    checked: {
-      type: Boolean,
+    
+    value: {
+     type: Boolean,
       default: false
-    }
+    },
   },
   data() {
     return {
-      checked: false,
+      // checked: false,
       cc: this.checked,
       host: undefined
     };

@@ -43,6 +43,7 @@ new Vue({
   el: "#app",
   data() {
     return {
+      singin:false,
       data: "默认值",
       checkbox: "1",
       selected: "1",
@@ -106,6 +107,9 @@ new Vue({
     };
   },
   methods: {
+    ck(){
+      console.log(this.singin)
+    },
     on() {
       this.$toast("点击弹出提示");
     },
