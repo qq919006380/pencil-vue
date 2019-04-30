@@ -107,9 +107,7 @@ new Vue({
     };
   },
   methods: {
-    ck(){
-      console.log(this.singin)
-    },
+    
     on() {
       this.$toast("点击弹出提示");
     },

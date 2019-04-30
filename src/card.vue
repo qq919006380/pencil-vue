@@ -11,7 +11,7 @@
 
 <script>
 import rough from "roughjs/dist/rough.umd";
-import tool from "./tool.js";
+import tool from "./tool/tool.js";
 export default {
   name: "pc-card",
   props: {
