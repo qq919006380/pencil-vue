@@ -1,59 +1,97 @@
 <template>
-  <div class="host" :class="disabled?'disabled':''" >
-    <!-- @change="_toggleCheck" -->
+  <div class="host" :class="disabled?'disabled':''">
     <label class="inline">
       <div style="vertical-align:middle;" class="inline pr">
-        <input
-          type="checkbox"
-          class="checkbox"
-          :checked="value"
-          @change="$emit('change',$event.target.checked)"
-          @input="$emit('input',$event.target.checked)"
-          @focus="$emit('focus',$event.target.checked)"
-          @blur="$emit('blur',$event.target.checked)"
-        >
+        <span class="inline pr">
+          <input
+            v-if="group"
+            type="checkbox"
+            :disabled="disabled"
+            :value="label"
+            v-model="model"
+            @change="change"
+            class="checkbox"
+          >
+          <input
+            class="checkbox"
+            v-else
+            type="checkbox"
+            :disabled="disabled"
+            :checked="currentValue"
+            @change="change"
+          >
+        </span>
         <div class="overlay">
           <svg id="svg"></svg>
         </div>
       </div>
+
       <div style="vertical-align:middle;" class="inline sp">
         <slot></slot>
       </div>
     </label>
   </div>
 </template>
-
-
 <script>
+import { findComponentUpward } from "./tool/assist.js";
+
+import Emitter from "./tool/emitter.js";
+import tool from "./tool/tool.js";
+
 import rough from "roughjs/dist/rough.umd";
-import tool from "./tool.js";
 export default {
-  name: "pc-checkbox",
-  props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    
-    value: {
-     type: Boolean,
-      default: false
-    },
+  mixins: [Emitter],
+  watch: {
+    value(val) {
+      if (val === this.trueValue || val === this.falseValue) {
+        this.updateModel();
+      } else {
+        throw "Value should be trueValue or falseValue.";
+      }
+    }
   },
-  data() {
-    return {
-      // checked: false,
-      cc: this.checked,
-      host: undefined
-    };
-  },
+
   mounted() {
     this.host = this.$el.querySelector(".checkbox");
     tool.watchDom(this.host, () => {
       this.r();
     });
+    this.parent = findComponentUpward(this, "iCheckboxGroup");
+
+    if (this.parent) {
+      this.group = true;
+    }
+
+    if (this.group) {
+      this.parent.updateModel(true);
+    } else {
+      this.updateModel();
+    }
   },
   methods: {
+    updateModel() {
+      this.currentValue = this.value === this.trueValue;
+    },
+
+    change(event) {
+      if (this.disabled) {
+        return false;
+      }
+
+      const checked = event.target.checked;
+      this.currentValue = checked;
+
+      const value = checked ? this.trueValue : this.falseValue;
+      this.$emit("input", value);
+
+      if (this.group) {
+        this.parent.change(this.model);
+      } else {
+        this.$emit("on-change", value);
+        this.dispatch("iFormItem", "on-form-change", value);
+      }
+      this.r();
+    },
     r() {
       const host = this.host;
       var svg = this.$el.querySelector("#svg");
@@ -77,25 +115,45 @@ export default {
         bowing: 8,
         stroke: this.stroke
       });
-      if (this.checked == true) {
+      if (this.currentValue == true) {
         svg.appendChild(check);
       }
-
+      console.log();
       svg.appendChild(node);
-    },
-    _toggleCheck() {
-      this.cc = !(this.cc || false);
-      this.check = !this.check;
-      console.log(this.check);
-      this.r();
-    },
-    on() {
-      console.log(132);
     }
+  },
+
+  props: {
+    label: {
+      type: [String, Number, Boolean]
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    value: {
+      type: [String, Number, Boolean],
+      default: false
+    },
+    trueValue: {
+      type: [String, Number, Boolean],
+      default: true
+    },
+    falseValue: {
+      type: [String, Number, Boolean],
+      default: false
+    }
+  },
+  data() {
+    return {
+      currentValue: this.value,
+      model: [],
+      group: false,
+      parent: null
+    };
   }
 };
 </script>
-
 <style lang="scss" scoped>
 svg {
   overflow: visible;
@@ -110,17 +168,14 @@ svg {
   display: inline-block;
   white-space: nowrap;
 }
-
 .host.disabled {
   opacity: 0.6 !important;
   cursor: default;
   pointer-events: none;
 }
-
 .host.disabled svg {
   background: rgba(0, 0, 0, 0.07);
 }
-
 :host(:focus) >>> path {
   stroke-width: 1.5;
 }
@@ -145,7 +200,6 @@ svg {
   height: 24px;
   margin: 0;
   padding: 0;
-  // background: pink;
   position: absolute;
   top: 0;
   left: 0;
@@ -154,18 +208,14 @@ svg {
   display: inline-block;
   vertical-align: middle;
 }
-
 #checkPanel {
   cursor: pointer;
 }
-
 svg {
   display: block;
 }
-
 svg /deep/ path {
   stroke: var(--wired-checkbox-icon-color, currentColor);
   stroke-width: 0.7;
 }
 </style>
-
