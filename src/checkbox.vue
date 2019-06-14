@@ -109,16 +109,15 @@ export default {
       });
       node.style.opacity = 0.8;
 
-      let check = rc.linearPath([[-3, 10], [10, 20], [34, -4]], {
-        strokeWidth: 3,
-        roughness: 2,
+      let check = rc.linearPath([[-3, 8], [10, 21], [32, -2]], {
+        strokeWidth: 2,
+        // roughness: 2,
         bowing: 8,
         stroke: this.stroke
       });
       if (this.currentValue == true) {
         svg.appendChild(check);
       }
-      console.log();
       svg.appendChild(node);
     }
   },
