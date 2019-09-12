@@ -25,7 +25,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel index.html",
+    "dev": "npx parcel index.html",
     "build": "npx parcel build index.js --no-cache --no-minify",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
