@@ -4,28 +4,18 @@
       <div style="vertical-align:middle;" class="inline pr">
         <span class="inline pr">
           <input
-            v-if="group"
+            class="checkbox"
+            ref="checkbox"
             type="checkbox"
             :disabled="disabled"
-            :value="label"
-            v-model="model"
+            v-model="currentValue"
             @change="change"
-            class="checkbox"
-          >
-          <input
-            class="checkbox"
-            v-else
-            type="checkbox"
-            :disabled="disabled"
-            :checked="currentValue"
-            @change="change"
-          >
+          />
         </span>
         <div class="overlay">
-          <svg id="svg"></svg>
+          <svg id="svg" />
         </div>
       </div>
-
       <div style="vertical-align:middle;" class="inline sp">
         <slot></slot>
       </div>
@@ -33,64 +23,21 @@
   </div>
 </template>
 <script>
-import { findComponentUpward } from "./tool/assist.js";
-
-import Emitter from "./tool/emitter.js";
 import tool from "./tool/tool.js";
 
 import rough from "roughjs/dist/rough.umd";
 export default {
-  mixins: [Emitter],
-  watch: {
-    value(val) {
-      if (val === this.trueValue || val === this.falseValue) {
-        this.updateModel();
-      } else {
-        throw "Value should be trueValue or falseValue.";
-      }
-    }
-  },
-
   mounted() {
-    this.host = this.$el.querySelector(".checkbox");
+    this.host = this.$refs.checkbox;
     tool.watchDom(this.host, () => {
       this.r();
     });
-    this.parent = findComponentUpward(this, "iCheckboxGroup");
-
-    if (this.parent) {
-      this.group = true;
-    }
-
-    if (this.group) {
-      this.parent.updateModel(true);
-    } else {
-      this.updateModel();
-    }
   },
   methods: {
-    updateModel() {
-      this.currentValue = this.value === this.trueValue;
-    },
-
     change(event) {
-      if (this.disabled) {
-        return false;
-      }
-
-      const checked = event.target.checked;
-      this.currentValue = checked;
-
-      const value = checked ? this.trueValue : this.falseValue;
-      this.$emit("input", value);
-
-      if (this.group) {
-        this.parent.change(this.model);
-      } else {
-        this.$emit("on-change", value);
-        this.dispatch("iFormItem", "on-form-change", value);
-      }
       this.r();
+      this.$emit("input", this.currentValue);
+      this.$emit("on-change", this.currentValue);
     },
     r() {
       const host = this.host;
@@ -123,31 +70,18 @@ export default {
   },
 
   props: {
-    label: {
-      type: [String, Number, Boolean]
-    },
     disabled: {
       type: Boolean,
       default: false
     },
     value: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    trueValue: {
-      type: [String, Number, Boolean],
-      default: true
-    },
-    falseValue: {
-      type: [String, Number, Boolean],
-      default: false
+      type: Boolean
     }
   },
   data() {
     return {
       currentValue: this.value,
       model: [],
-      group: false,
       parent: null
     };
   }
