@@ -44,7 +44,6 @@ export default {
       var svg = this.$el.querySelector("#svg");
       tool.clearNode(svg);
       const s = host.getBoundingClientRect();
-      const elev = Math.min(Math.max(0, this.elevation), 5);
       svg.setAttribute("width", s.width + 2);
       svg.setAttribute("height", s.height + 2);
       const rc = rough.svg(svg);
