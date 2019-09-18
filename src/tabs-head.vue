@@ -6,7 +6,7 @@
         <svg id="svg" />
       </div>
     </div>
-    <svg id="longLine_svg"/>
+    <svg id="longLine_svg" />
 
     <div class="actions-wrapper">
       <slot name="actions"></slot>
@@ -31,9 +31,9 @@ export default {
     });
     this.host = this.$refs.line;
     tool.watchDom(this.host, () => {
-      console.log("ww");
       this.r();
     });
+    this.longLine_svg_r();
   },
   methods: {
     updateLinePosition(selectedVm) {
@@ -58,20 +58,17 @@ export default {
       });
       svg.appendChild(node);
     },
-    longLine_svg_r(){
-      var host=this.$refs.head
+    longLine_svg_r() {
+      var host = this.$refs.head;
       var svg = this.$el.querySelector("#longLine_svg");
       const s = host.getBoundingClientRect();
-      svg.setAttribute("width", s.width + 2);
-      svg.setAttribute("height", s.height + 2);
+      svg.setAttribute("width", s.width);
+      svg.setAttribute("height", s.height);
       const rc = rough.svg(svg);
-      let node = rc.line(0, 2, s.width, 2, {
-        // strokeWidth:5,
-        // roughness :5,
-        // bowing: 5
-      });
+      let node = rc.line(0, s.height, s.width, s.height, {});
+      node.style.opacity = 0.3;
       svg.appendChild(node);
-    },
+    }
   }
 };
 </script>
@@ -96,6 +93,12 @@ $blue: blue;
       margin: 0;
       padding: 0;
     }
+  }
+  > #longLine_svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
   > .actions-wrapper {
     margin-left: auto;
