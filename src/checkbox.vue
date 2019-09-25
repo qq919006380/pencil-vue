@@ -146,7 +146,7 @@ svg {
 svg {
   display: block;
 }
-svg /deep/ path {
+svg >>> path {
   stroke: var(--wired-checkbox-icon-color, currentColor);
   stroke-width: 0.7;
 }

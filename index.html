@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <style>
-      .card {
-        width: 30%;
-        display: inline-block;
-      }
-      .c1 {
-        background: pink;
-      }
-      .c2 {
-        background: bisque;
-      }
-      .popover {
-        margin: 0 100px;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div id="app">
-      <!-- <pc-button>按钮</pc-button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .card {
+      width: 30%;
+      display: inline-block;
+    }
+
+    .c1 {
+      background: pink;
+    }
+
+    .c2 {
+      background: bisque;
+    }
+
+    .popover {
+      margin: 0 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <pc-button>按钮</pc-button>
       <pc-button class="a">button</pc-button>
       <pc-button elevation="5">button</pc-button>
       <pc-button elevation="5">button</pc-button>
@@ -126,17 +130,20 @@
       <button @click="on4">不关闭</button>
       <button @click="on5">关闭按钮</button>
       <hr /> -->
-      <pc-tabs :selected="selected">
-        <pc-tabs-head>
-          <pc-tabs-item name="1">1</pc-tabs-item>
-          <pc-tabs-item name="2">2</pc-tabs-item>
-        </pc-tabs-head>
-        <pc-tabs-body>
-          <pc-tabs-pane name="1">content 1</pc-tabs-pane>
-          <pc-tabs-pane name="2">content 2</pc-tabs-pane>
-        </pc-tabs-body>
-      </pc-tabs>
-<!-- 
+    <pc-tabs :selected="selected">
+      <pc-tabs-head>
+        <pc-tabs-item name="1">1</pc-tabs-item>
+        <pc-tabs-item name="2">2</pc-tabs-item>
+      </pc-tabs-head>
+      <pc-tabs-body>
+        <pc-tabs-pane name="1">
+          <div>content 1</div>
+          <pc-checkbox id="cbox" v-model='singin'>多选框{{singin}}</pc-checkbox>
+        </pc-tabs-pane>
+        <pc-tabs-pane name="2">content 2</pc-tabs-pane>
+      </pc-tabs-body>
+    </pc-tabs>
+    <!-- 
       <pc-button style="margin:10px" :decoration="config">默认按钮</pc-button>
       <pc-button style="margin:10px" :decoration="config1" elevation="1"
         >elevation=1</pc-button
@@ -165,7 +172,8 @@
       <pc-button style="margin:10px" elevation="4">elevation=4</pc-button>
       <pc-button style="margin:10px" elevation="5">elevation=5</pc-button>
       <br /><br /> -->
-    </div>
-    <script src="./src/app.js"></script>
-  </body>
+  </div>
+  <script src="./src/app.js"></script>
+</body>
+
 </html>
