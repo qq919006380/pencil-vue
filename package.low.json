@@ -1,0 +1,40 @@
+{
+  "name": "pencil-vue",
+  "version": "0.1.9",
+  "description": "",
+  "main": "dist/index.js",
+  "dependencies": {
+    "highlight.js": "^9.15.6",
+    "plugin": "^0.3.3",
+    "roughjs": "^3.1.0",
+    "test": "^0.6.0",
+    "vue": "^2.5.21",
+    "vue-hot-reload-api": "^2.3.1",
+    "wired-card": "^0.8.1",
+    "wired-item": "^0.8.1"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.3.1",
+    "node-sass": "^4.11.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "sass": "^1.16.0",
+    "sass-loader": "^7.1.0",
+    "vue-server-renderer": "^2.5.21",
+    "vue-template-compiler": "^2.5.21",
+    "vuepress": "^0.14.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx parcel index.html",
+    "build": "npx parcel build index.js --no-cache --no-minify",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy:build": "bash deploy.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js"
+  }
+}

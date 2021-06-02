@@ -1,40 +1,52 @@
 {
   "name": "pencil-vue",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "",
   "main": "dist/index.js",
+  "scripts": {
+    "dev": "webpack serve --progress --config build/webpack.config.js",
+    "build": "webpack --config build/webpack.build.conf.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen": "bash gc.sh",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "deploy:build": "bash deploy.sh"
+  },
   "dependencies": {
-    "highlight.js": "^9.15.6",
-    "plugin": "^0.3.3",
-    "roughjs": "^3.1.0",
-    "test": "^0.6.0",
-    "vue": "^2.5.21",
-    "vue-hot-reload-api": "^2.3.1",
-    "wired-card": "^0.8.1",
-    "wired-item": "^0.8.1"
+    "roughjs": "^4.4.1",
+    "vue": "^3.0.11"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^2.3.1",
-    "node-sass": "^4.11.0",
-    "resize-observer-polyfill": "^1.5.1",
-    "sass": "^1.16.0",
-    "sass-loader": "^7.1.0",
-    "vue-server-renderer": "^2.5.21",
-    "vue-template-compiler": "^2.5.21",
-    "vuepress": "^0.14.8"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx parcel index.html",
-    "build": "npx parcel build index.js --no-cache --no-minify",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "deploy:build": "bash deploy.sh"
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
+    "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+    "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+    "@babel/plugin-transform-object-assign": "^7.12.13",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-typescript": "^7.13.0",
+    "@vue/babel-plugin-jsx": "^1.0.6",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-import": "^1.13.3",
+    "css-loader": "^5.2.4",
+    "html-webpack-plugin": "^5.3.1",
+    "less": "^4.1.1",
+    "less-loader": "^8.1.1",
+    "markdown-it-container": "^3.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "sass": "^1.34.0",
+    "style-loader": "^2.0.0",
+    "vitepress": "^0.14.0",
+    "vue-loader": "^16.1.2",
+    "vue-router": "^4.0.2",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpackbar": "^5.0.0-3"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "alias": {
-    "vue": "./node_modules/vue/dist/vue.common.js"
-  }
+  "license": "ISC"
 }

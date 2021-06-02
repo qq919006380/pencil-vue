@@ -1,0 +1,29 @@
+.pencil_host {
+    position: relative;
+    font-family: inherit;
+    margin: 2px;
+    & .pencil_overlay {
+        z-index: -3;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        & /deep/ svg {
+          overflow: overlay;
+          display: block;
+        }
+        & /deep/ svg  /deep/ path {
+          stroke: currentColor;
+          stroke-width: 0.7;
+          fill: transparent;
+        }
+    }
+  }
+  .pencil_host.disabled {
+    opacity: 0.6 !important;
+    background: rgba(0, 0, 0, 0.07);
+    cursor: default;
+    pointer-events: none;
+  }
