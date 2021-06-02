@@ -1,6 +1,5 @@
 /dist
 /docs/.vitepress/dist
 /.cache
-/package-lock.json
 /node_modules
 /demand.md
