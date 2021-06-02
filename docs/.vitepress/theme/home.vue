@@ -10,13 +10,13 @@
       <template #header>
         <h3>简明优先</h3>
       </template>
-      <p>用法简单,构建声明式UI框架</p>
+      <p>用法简单,可开箱即用,构建声明式UI框架</p>
     </Card>
     <Card class="card">
       <template #header>
-        <h3>Vue 驱动</h3>
+        <h3>Vue3 驱动</h3>
       </template>
-      <p>享用 Vue + webpack 开发环境</p>
+      <p>享用最新 Vue3 + webpack 开发环境</p>
     </Card>
     <Card class="card">
       <template #header>
@@ -61,7 +61,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   .card {
-    color: rgba(72, 110, 142, 0.5);
+    color: rgba(72, 110, 142, 1);
     width: 30%;
   }
 }

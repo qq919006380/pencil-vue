@@ -1,4 +1,4 @@
-import rough from "roughjs/bundled/rough.esm.js";
+import rough from "roughjs/bundled/rough.cjs.js"; 
 // 默认decoration
 //fillStyle:
 //hachure 平行线，它可以使用fillWeight、hachureAngle和hachureGap属性进一步配置。

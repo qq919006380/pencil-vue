@@ -2,7 +2,7 @@
   <Popover position="bottom" trigger="hover">
     <template #content>
       <div class="box">
-        <img src="../wx.jpg" />
+        <img :src="$withBase('wx.jpg')" />
       </div>
     </template>
     <a style="cursor: pointer">
