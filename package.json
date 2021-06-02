@@ -2,7 +2,7 @@
   "name": "pencil-vue",
   "version": "0.2.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/pencil.js",
   "scripts": {
     "dev": "webpack serve --progress --config build/webpack.config.js",
     "build": "webpack --config build/webpack.build.conf.js",
