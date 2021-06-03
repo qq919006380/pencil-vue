@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <a href="/install/">
-      <Button elevation="5" class="btn"> 快速上手 →</Button>
+      <Button elevation="5" class="btn">快速上手 →</Button>
     </a>
   </div>
 
@@ -29,15 +29,6 @@
 
 <script>
 export default {
-  methods: {
-    go({ link = "" }) {
-      if (/^http/.test(this.link)) {
-        window.open(this.link);
-      } else {
-        this.$router.push(this.link);
-      }
-    },
-  },
 };
 </script>
 
@@ -49,7 +40,7 @@ export default {
   margin: 0px 0 45px 0;
   padding: 20px 35px;
   font-weight: bold;
-    color: #4e6e8e;
+  color: #4e6e8e;
 }
 
 .btn:hover {
@@ -67,9 +58,9 @@ export default {
 }
 
 @media (max-width: 970px) {
-  .card-container{
+  .card-container {
     display: block;
-    .card{
+    .card {
       margin: 0 auto;
       margin-bottom: 40px;
       width: 80%;
