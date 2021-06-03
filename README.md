@@ -1,4 +1,7 @@
 # [pencil-vue 官网](https://qq919006380.github.io/pencil-vue/)
+<center>
+![logo2.jpg](https://i.loli.net/2021/06/03/UVA3qSfnhXT9F6c.jpg)
+</center>
 
 # pencil-vue
 
@@ -27,7 +30,3 @@ app.mount('#app')
 
 ![demo](https://i.loli.net/2019/03/19/5c90dee1e0cb8.jpg)
 
-
-
-
-test
