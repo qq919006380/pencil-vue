@@ -1,4 +1,4 @@
-### [pencil-vue 官网](https://qq919006380.github.io/pencil-vue/)
+# [pencil-vue 官网](https://qq919006380.github.io/pencil-vue/)
 
 # pencil-vue
 
@@ -14,16 +14,13 @@
 ### 使用
 
 ```javascript
-import Vue from "vue";
-import { button } from "pencil-vue";
-import "pencil-vue/dist/index.css";
+import { createApp } from 'vue'
+import App from './App.vue'
+import pencil from "pencil-vue";
 
-new Vue({
-  el: "#app",
-  components: {
-    "pc-button": Button
-  }
-});
+var app = createApp(App)
+app.use(pencil);
+app.mount('#app')
 ```
 
 ---
