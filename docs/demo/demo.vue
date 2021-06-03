@@ -1,9 +1,15 @@
 <template  >
   <Tabs v-model="activeName">
     <Tab title="登录">
-      <div>账号：<Input v-model="user"></Input></div>
+      <div>
+        账号：
+        <Input v-model="user"></Input>
+      </div>
       <br />
-      <div>密码：<Input v-model="password"></Input></div>
+      <div>
+        密码：
+        <Input v-model="password"></Input>
+      </div>
       <br />
       <Button @click="login" class="btn">登录</Button>
       <Popover position="right" trigger="hover">
@@ -20,11 +26,20 @@
       </Card>
     </Tab>
     <Tab title="注册">
-      <div>账号：<Input v-model="user"></Input></div>
+      <div>
+        账号：
+        <Input v-model="user"></Input>
+      </div>
       <br />
-      <div>密码：<Input v-model="password"></Input></div>
+      <div>
+        密码：
+        <Input v-model="password"></Input>
+      </div>
       <br />
-      <div>手机：<Input v-model="phone"></Input></div>
+      <div>
+        手机：
+        <Input v-model="phone"></Input>
+      </div>
       <br />
       <Button class="btn">注册</Button>
     </Tab>
