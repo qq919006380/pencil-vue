@@ -1,7 +1,5 @@
 # [pencil-vue 官网](https://qq919006380.github.io/pencil-vue/)
-<center>
 ![logo2.jpg](https://i.loli.net/2021/06/03/UVA3qSfnhXT9F6c.jpg)
-</center>
 
 # pencil-vue
 
