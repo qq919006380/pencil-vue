@@ -13,6 +13,10 @@
     "docs:serve": "vitepress serve docs",
     "deploy:build": "bash deploy.sh"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qq919006380/pencil-vue.git"
+  },
   "dependencies": {
     "roughjs": "^4.4.1",
     "vue": "^3.0.11"
